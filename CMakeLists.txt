@@ -3,4 +3,6 @@ project(cyber_pet_project)
 
 set(CMAKE_CXX_STANDARD 17)
 
-add_executable(cyber_pet_project main.cpp)
+add_executable(cyber_pet_project src/main.cpp
+        src/headers/csv_api.h
+        src/headers/cyber_pet.h)
