@@ -1,0 +1,3 @@
+/home/kostiantyn/Documents/education/C/cyber-pet-project/cmake-build-debug/CMakeFiles/cyber_pet_project.dir
+/home/kostiantyn/Documents/education/C/cyber-pet-project/cmake-build-debug/CMakeFiles/edit_cache.dir
+/home/kostiantyn/Documents/education/C/cyber-pet-project/cmake-build-debug/CMakeFiles/rebuild_cache.dir
