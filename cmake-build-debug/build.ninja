@@ -55,6 +55,18 @@ build CMakeFiles/cyber_pet_project.dir/src/main.cpp.o: CXX_COMPILER__cyber_pet_p
   OBJECT_DIR = CMakeFiles/cyber_pet_project.dir
   OBJECT_FILE_DIR = CMakeFiles/cyber_pet_project.dir/src
 
+build CMakeFiles/cyber_pet_project.dir/src/source/csv_api.cpp.o: CXX_COMPILER__cyber_pet_project_unscanned_Debug /home/kostiantyn/Documents/education/C/cyber-pet-project/src/source/csv_api.cpp || cmake_object_order_depends_target_cyber_pet_project
+  DEP_FILE = CMakeFiles/cyber_pet_project.dir/src/source/csv_api.cpp.o.d
+  FLAGS = -g -fdiagnostics-color=always
+  OBJECT_DIR = CMakeFiles/cyber_pet_project.dir
+  OBJECT_FILE_DIR = CMakeFiles/cyber_pet_project.dir/src/source
+
+build CMakeFiles/cyber_pet_project.dir/src/source/cyber_pet.cpp.o: CXX_COMPILER__cyber_pet_project_unscanned_Debug /home/kostiantyn/Documents/education/C/cyber-pet-project/src/source/cyber_pet.cpp || cmake_object_order_depends_target_cyber_pet_project
+  DEP_FILE = CMakeFiles/cyber_pet_project.dir/src/source/cyber_pet.cpp.o.d
+  FLAGS = -g -fdiagnostics-color=always
+  OBJECT_DIR = CMakeFiles/cyber_pet_project.dir
+  OBJECT_FILE_DIR = CMakeFiles/cyber_pet_project.dir/src/source
+
 
 # =============================================================================
 # Link build statements for EXECUTABLE target cyber_pet_project
@@ -63,7 +75,7 @@ build CMakeFiles/cyber_pet_project.dir/src/main.cpp.o: CXX_COMPILER__cyber_pet_p
 #############################################
 # Link the executable cyber_pet_project
 
-build cyber_pet_project: CXX_EXECUTABLE_LINKER__cyber_pet_project_Debug CMakeFiles/cyber_pet_project.dir/src/main.cpp.o
+build cyber_pet_project: CXX_EXECUTABLE_LINKER__cyber_pet_project_Debug CMakeFiles/cyber_pet_project.dir/src/main.cpp.o CMakeFiles/cyber_pet_project.dir/src/source/csv_api.cpp.o CMakeFiles/cyber_pet_project.dir/src/source/cyber_pet.cpp.o
   FLAGS = -g
   OBJECT_DIR = CMakeFiles/cyber_pet_project.dir
   POST_BUILD = :
