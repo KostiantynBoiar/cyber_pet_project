@@ -14,10 +14,17 @@ Game::~Game() {
 }
 
 void Game::update() {
-
+    this->pollEvents();
 }
 
+/*Over here I will be rendering the game objects*/
 void Game::render() {
+    this->window->clear(sf::Color(255, 0, 0, 255));
+
+    //Draw game objects
+
+
+    this->window->display();
 
 }
 
@@ -34,4 +41,14 @@ void Game::initWindow() {
 
 const bool Game::getWindowIsOpen() const {
     return this-window->isOpen();
+}
+
+void Game::pollEvents() {
+    while(this->window->pollEvent(this->event)){
+        switch (this->event.type) {
+            case sf::Event::Closed:
+                this->window->close();
+                break;
+        }
+    }
 }

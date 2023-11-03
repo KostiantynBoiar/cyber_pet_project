@@ -6,9 +6,12 @@ int main()
 {
     /*That's window properties of my game*/
     Game game;
-
-    while(game.getWindowIsOpen()){
+    while (game.getWindowIsOpen())
+    {
+        game.update();
+        game.render();
 
     }
+
     return 0;
 }
