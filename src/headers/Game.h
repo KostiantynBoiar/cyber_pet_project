@@ -22,7 +22,7 @@ public:
     virtual ~Game();
     void update();
     void render();
-
+    const bool getWindowIsOpen() const;
 };
 
 

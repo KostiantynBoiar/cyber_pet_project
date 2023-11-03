@@ -1,22 +1,14 @@
 #include <SFML/Graphics.hpp>
+#include <caca_conio.h>
+#include "headers/Game.h"
 
 int main()
 {
     /*That's window properties of my game*/
-    sf::RenderWindow window(sf::VideoMode(1280, 720), "Cyber pet game");
+    Game game;
 
-    while (window.isOpen())
-    {
-        sf::Event event;
-        while (window.pollEvent(event))
-        {
-            if (event.type == sf::Event::Closed)
-                window.close();
-        }
+    while(game.getWindowIsOpen()){
 
-        window.clear();
-        window.display();
     }
-
     return 0;
 }

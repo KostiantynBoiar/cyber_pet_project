@@ -31,3 +31,7 @@ void Game::initWindow() {
     this->videoMode.width = 1280;
     this->window = new sf::RenderWindow(this->videoMode, "Cyber pet game");
 }
+
+const bool Game::getWindowIsOpen() const {
+    return this-window->isOpen();
+}
