@@ -5,9 +5,9 @@ set(CMAKE_CXX_STANDARD 17)
 
 add_executable(cyber_pet_project src/main.cpp
         src/headers/csv_api.h
-        src/headers/cyber_pet.h
         src/source/csv_api.cpp
-        src/source/cyber_pet.cpp
         src/SFML-2.6.0-linux-gcc-64-bit/SFML-2.6.0/include/SFML/OpenGL.hpp
         src/source/Player.cpp
-        src/source/Player.h)
+        src/headers/Player.h
+        src/source/Game.cpp
+        src/headers/Game.h)

@@ -3,7 +3,7 @@
 // That's class with realization methods of our player
 //
 
-#include "Player.h"
+#include "../headers/Player.h"
 
 int Player::getPlayerHP() {
     return playerHP;
