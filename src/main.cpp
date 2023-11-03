@@ -2,9 +2,8 @@
 
 int main()
 {
-    sf::RenderWindow window(sf::VideoMode(1280, 720), "SFML works!");
-    sf::CircleShape shape(1000.f);
-    shape.setFillColor(sf::Color::Green);
+    /*That's window properties of my game*/
+    sf::RenderWindow window(sf::VideoMode(1280, 720), "Cyber pet game");
 
     while (window.isOpen())
     {
@@ -16,7 +15,6 @@ int main()
         }
 
         window.clear();
-        window.draw(shape);
         window.display();
     }
 
