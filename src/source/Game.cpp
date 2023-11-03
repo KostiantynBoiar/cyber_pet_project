@@ -5,7 +5,8 @@
 #include "../headers/Game.h"
 
 Game::Game() {
-
+    this->initializeVariables();
+    this->initWindow();
 }
 
 Game::~Game() {
