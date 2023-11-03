@@ -28,3 +28,11 @@ int Player::getPlayerAge() {
 int Player::setPlayerAge(int playerAge) {
     this->playerAge = playerAge;
 }
+
+Player::Player(std::string playerName) {
+    this->playerName = playerName;
+}
+
+Player::~Player() {
+
+}

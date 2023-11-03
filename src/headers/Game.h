@@ -5,8 +5,17 @@
 #ifndef CYBER_PET_PROJECT_GAME_H
 #define CYBER_PET_PROJECT_GAME_H
 
+/*Header of class that acts the game engine*/
 
 class Game {
+private:
+    void initializeVariables();
+    void initWindow();
+public:
+    Game();
+    virtual ~Game();
+    void update();
+    void render();
 
 };
 

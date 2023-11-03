@@ -15,6 +15,8 @@ private:
     int playerAge;
 
 public:
+  Player(std::string playerName);
+  virtual ~Player();
   std::string getPlayerName();
   std::string setPlayerName(std::string playerName);
   int getPlayerHP();
