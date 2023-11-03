@@ -5,7 +5,7 @@
 #include "../headers/Game.h"
 
 Game::Game() {
-    this->initializeVariables();
+    this->initVariables();
     this->initWindow();
 }
 
@@ -28,7 +28,7 @@ void Game::render() {
 
 }
 
-void Game::initializeVariables() {
+void Game::initVariables() {
     this->window = nullptr;
 
 }

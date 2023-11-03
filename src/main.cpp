@@ -1,6 +1,5 @@
 #include <SFML/Graphics.hpp>
-#include <caca_conio.h>
-#include "headers/Game.h"
+#include "source/Game.cpp" /*Here is must be cpp file instead of .h*/
 
 int main()
 {
@@ -10,7 +9,6 @@ int main()
     {
         game.update();
         game.render();
-
     }
 
     return 0;

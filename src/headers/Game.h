@@ -15,7 +15,7 @@ private:
     sf::RenderWindow* window;
     sf::Event event;
     sf::VideoMode videoMode;
-    void initializeVariables();
+    void initVariables();
     void initWindow();
 public:
     Game();
