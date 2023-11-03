@@ -5,10 +5,16 @@
 #ifndef CYBER_PET_PROJECT_GAME_H
 #define CYBER_PET_PROJECT_GAME_H
 
+#include <SFML/Graphics/RenderWindow.hpp>
+#include <SFML/Window/Event.hpp>
+
 /*Header of class that acts the game engine*/
 
 class Game {
 private:
+    sf::RenderWindow* window;
+    sf::Event event;
+    sf::VideoMode videoMode;
     void initializeVariables();
     void initWindow();
 public:
