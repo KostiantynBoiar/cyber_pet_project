@@ -25,7 +25,7 @@ private:
 
 public:
 
-  Player(std::string playerName);
+  Player();
   virtual ~Player();
 
   std::string getPlayerName();

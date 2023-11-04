@@ -1,4 +1,13 @@
 /opt/clion/bin/cmake/linux/x64/bin/cmake -DCMAKE_BUILD_TYPE=Debug -DCMAKE_MAKE_PROGRAM=/opt/clion/bin/ninja/linux/x64/ninja -G Ninja -S /home/kostiantyn/Documents/education/C/cyber-pet-project -B /home/kostiantyn/Documents/education/C/cyber-pet-project/cmake-build-debug
 -- Configuring done (0.0s)
--- Generating done (0.0s)
--- Build files have been written to: /home/kostiantyn/Documents/education/C/cyber-pet-project/cmake-build-debug
+CMake Error at CMakeLists.txt:6 (add_executable):
+  Cannot find source file:
+
+    src/SFML-2.6.0-linux-gcc-64-bit/SFML-2.6.0/include/SFML/OpenGL.hpp
+
+
+CMake Error at CMakeLists.txt:6 (add_executable):
+  No SOURCES given to target: cyber_pet_project
+
+
+CMake Generate step failed.  Build files cannot be regenerated correctly.

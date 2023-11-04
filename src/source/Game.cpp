@@ -6,11 +6,13 @@
 
 Game::Game() {
     this->initVariables();
+    this->initPlayer();
     this->initWindow();
 }
 
 Game::~Game() {
     delete this->window;
+    delete this->player;
 }
 
 void Game::update() {
@@ -51,4 +53,17 @@ void Game::pollEvents() {
                 break;
         }
     }
+    //this->updatePlayer();
+}
+
+void Game::renderPlayer() {
+    this->player->render(reinterpret_cast<sf::RenderTarget &>(this->window));
+}
+
+void Game::initPlayer() {
+    this->player = new Player();
+}
+
+void Game::updatePlayer() {
+    this->player->update();
 }

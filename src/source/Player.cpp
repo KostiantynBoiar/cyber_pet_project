@@ -3,6 +3,7 @@
 // That's class with realization methods of our player
 //
 
+#include <iostream>
 #include "../headers/Player.h"
 
 int Player::getPlayerHP() {
@@ -29,10 +30,9 @@ int Player::setPlayerAge(int playerAge) {
     this->playerAge = playerAge;
 }
 
-Player::Player(std::string playerName) {
+Player::Player() {
     this->initSprite();
     this->initTexture();
-    this->playerName = playerName;
 }
 
 Player::~Player() {
@@ -44,18 +44,20 @@ void Player::playerState() {
 }
 
 void Player::initSprite() {
-
+    this->sprite.setTexture(this->texture);
 }
 
 void Player::initTexture() {
-
+    if(!this->texture.loadFromFile("src/assets/textures/png/Idle (1).png")){
+        std::cout << "ERROR: PLAYER COULD NOT LOAD FROM FILE\n";
+    }
 }
 
 void Player::update() {
 
 }
 
-void Player::render(sf::RenderTarget &target) {
+void Player::render(sf::RenderTarget& target) {
 
 }
 
