@@ -30,6 +30,8 @@ int Player::setPlayerAge(int playerAge) {
 }
 
 Player::Player(std::string playerName) {
+    this->initSprite();
+    this->initTexture();
     this->playerName = playerName;
 }
 
@@ -40,3 +42,20 @@ Player::~Player() {
 void Player::playerState() {
 
 }
+
+void Player::initSprite() {
+
+}
+
+void Player::initTexture() {
+
+}
+
+void Player::update() {
+
+}
+
+void Player::render(sf::RenderTarget &target) {
+
+}
+
