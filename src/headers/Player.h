@@ -23,7 +23,7 @@ public:
   int setPlayerHP(int playerHP);
   int getPlayerAge();
   int setPlayerAge(int playerAge);
-
+  void playerState();
 };
 
 

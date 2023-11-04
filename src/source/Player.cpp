@@ -36,3 +36,7 @@ Player::Player(std::string playerName) {
 Player::~Player() {
 
 }
+
+void Player::playerState() {
+
+}

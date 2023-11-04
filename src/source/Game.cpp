@@ -19,7 +19,7 @@ void Game::update() {
 
 /*Over here I will be rendering the game objects*/
 void Game::render() {
-    this->window->clear(sf::Color(255, 0, 0, 255));
+    this->window->clear();
 
     //Draw game objects
 
