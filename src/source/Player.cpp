@@ -1,8 +1,3 @@
-//
-// Created by Kostiantyn on 11/3/23.
-// That's class with realization methods of our player
-//
-
 #include <iostream>
 #include "../headers/Player.h"
 
@@ -43,24 +38,24 @@ Player::~Player() {
 }
 
 void Player::playerState() {
+    // Implement the playerState method if needed
 }
 
 void Player::initSprite() {
-    this->sprite.setTexture(this->texture);
-
+    // Initialize the sprite if necessary
 }
 
 void Player::initTexture() {
-    if(!this->texture.loadFromFile("/home/kostiantyn/Documents/education/C/cyber-pet-project/src/assets/textures/png/Idle (6).png")){
+    if (!this->texture.loadFromFile("/home/kostiantyn/Documents/education/C/cyber-pet-project/src/assets/textures/png/Idle (6).png")) {
         std::cout << "ERROR: PLAYER COULD NOT LOAD FROM FILE\n";
     }
 }
 
 void Player::update() {
-
+    // Implement the update method if needed
 }
 
 void Player::render(sf::RenderTarget& target) {
+    this->sprite.setTexture(this->texture);
     target.draw(this->sprite);
 }
-

@@ -1,7 +1,3 @@
-//
-// Created by kostiantyn on 11/3/23.
-//
-
 #include <iostream>
 #include "../headers/Game.h"
 
@@ -18,22 +14,20 @@ Game::~Game() {
 
 void Game::update() {
     this->pollEvents();
+    this->updatePlayer();
 }
 
-/*Over here I will be rendering the game objects*/
 void Game::render() {
     this->window->clear();
 
-    //Draw game objects
+    // Draw game objects
     this->renderPlayer();
 
     this->window->display();
-
 }
 
 void Game::initVariables() {
     this->window = nullptr;
-
 }
 
 void Game::initWindow() {
@@ -43,18 +37,17 @@ void Game::initWindow() {
 }
 
 const bool Game::getWindowIsOpen() const {
-    return this-window->isOpen();
+    return this->window->isOpen();
 }
 
 void Game::pollEvents() {
-    while(this->window->pollEvent(this->event)){
+    while (this->window->pollEvent(this->event)) {
         switch (this->event.type) {
             case sf::Event::Closed:
                 this->window->close();
                 break;
         }
     }
-    this->updatePlayer();
 }
 
 void Game::renderPlayer() {
