@@ -24,7 +24,7 @@ void Game::render() {
     this->window->clear();
 
     //Draw game objects
-
+    this->renderPlayer();
 
     this->window->display();
 
@@ -57,7 +57,7 @@ void Game::pollEvents() {
 }
 
 void Game::renderPlayer() {
-    this->player->render(reinterpret_cast<sf::RenderTarget &>(this->window));
+    this->player->render(*this->window);
 }
 
 void Game::initPlayer() {

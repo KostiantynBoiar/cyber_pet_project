@@ -16,10 +16,12 @@ std::string Player::getPlayerName() {
 
 std::string Player::setPlayerName(std::string playerName) {
     this->playerName = playerName;
+    return playerName;
 }
 
 int Player::setPlayerHP(int playerHP) {
     this->playerHP = playerHP;
+    return playerHP;
 }
 
 int Player::getPlayerAge() {
@@ -28,6 +30,7 @@ int Player::getPlayerAge() {
 
 int Player::setPlayerAge(int playerAge) {
     this->playerAge = playerAge;
+    return playerAge;
 }
 
 Player::Player() {
@@ -40,11 +43,11 @@ Player::~Player() {
 }
 
 void Player::playerState() {
-
 }
 
 void Player::initSprite() {
     this->sprite.setTexture(this->texture);
+
 }
 
 void Player::initTexture() {
@@ -58,6 +61,6 @@ void Player::update() {
 }
 
 void Player::render(sf::RenderTarget& target) {
-
+    target.draw(this->sprite);
 }
 
