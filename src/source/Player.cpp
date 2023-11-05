@@ -51,7 +51,7 @@ void Player::initSprite() {
 }
 
 void Player::initTexture() {
-    if(!this->texture.loadFromFile("src/assets/textures/png/Idle (1).png")){
+    if(!this->texture.loadFromFile("/home/kostiantyn/Documents/education/C/cyber-pet-project/src/assets/textures/png/Idle (6).png")){
         std::cout << "ERROR: PLAYER COULD NOT LOAD FROM FILE\n";
     }
 }

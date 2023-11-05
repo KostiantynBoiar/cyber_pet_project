@@ -2,6 +2,7 @@
 // Created by kostiantyn on 11/3/23.
 //
 
+#include <iostream>
 #include "../headers/Game.h"
 
 Game::Game() {
@@ -53,7 +54,7 @@ void Game::pollEvents() {
                 break;
         }
     }
-    //this->updatePlayer();
+    this->updatePlayer();
 }
 
 void Game::renderPlayer() {
