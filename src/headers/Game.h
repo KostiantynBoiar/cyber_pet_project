@@ -38,6 +38,7 @@ public:
 
     void renderPlayer();
     void updatePlayer();
+    static sf::Font getFont();
 };
 
 

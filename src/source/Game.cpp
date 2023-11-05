@@ -1,4 +1,5 @@
 #include <iostream>
+#include <SFML/Graphics/Text.hpp>
 #include "../headers/Game.h"
 
 Game::Game() {
@@ -52,6 +53,25 @@ void Game::pollEvents() {
 
 void Game::renderPlayer() {
     this->player->render(*this->window);
+
+    sf::Font font;
+    if(!font.loadFromFile("/home/kostiantyn/Documents/education/C/cyber-pet-project/src/assets/fonts/Raleway-Bold.ttf")){
+        std::cout << "Font could not be found";
+    }else {
+        sf::Text hpText;
+        hpText.setFont(font); // Set the font for the text
+        hpText.setCharacterSize(20);
+        hpText.setFillColor(sf::Color::White);
+        hpText.setPosition(10, 10); // Set the position of the text on the screen
+
+        // Convert player's HP to a string and set it as the text
+        int playerHP = this->player->getPlayerHP();
+        std::string hpString = "HP: " + std::to_string(playerHP);
+        hpText.setString(hpString);
+
+        // Draw the HP text on the screen
+        this->window->draw(hpText);
+    }
 }
 
 void Game::initPlayer() {
@@ -61,3 +81,12 @@ void Game::initPlayer() {
 void Game::updatePlayer() {
     this->player->update();
 }
+/* If I try to implement draw player's hp through a function I got error message "segmentation fault"
+sf::Font Game::getFont() {
+    sf::Font font;
+    if(!font.loadFromFile("/home/kostiantyn/Documents/education/C/cyber-pet-project/src/assets/fonts/Raleway-Bold.ttf")){
+        std::cout << "Font could not be found";
+    }
+    return font;
+}
+*/

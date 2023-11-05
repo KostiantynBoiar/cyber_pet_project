@@ -1,7 +1,4 @@
-//
-// Created by kostiantyn on 11/3/23.
-//
-
+// Player.h
 #ifndef CYBER_PET_PROJECT_PLAYER_H
 #define CYBER_PET_PROJECT_PLAYER_H
 
@@ -20,26 +17,23 @@ private:
     int playerHP;
     int playerAge;
 
-
     void initSprite();
     void initTexture();
 
 public:
+    Player();
+    virtual ~Player();
 
-  Player();
-  virtual ~Player();
+    std::string getPlayerName();
+    std::string setPlayerName(std::string playerName);
+    int getPlayerHP();
+    void setPlayerHP(int playerHP); // Changed return type to void
+    int getPlayerAge();
+    int setPlayerAge(int playerAge);
 
-  std::string getPlayerName();
-  std::string setPlayerName(std::string playerName);
-  int getPlayerHP();
-  int setPlayerHP(int playerHP);
-  int getPlayerAge();
-  int setPlayerAge(int playerAge);
-
-  void playerState();
-  void update();
-  void render(sf::RenderTarget& target);
+    void playerState();
+    void update();
+    void render(sf::RenderTarget& target);
 };
-
 
 #endif //CYBER_PET_PROJECT_PLAYER_H

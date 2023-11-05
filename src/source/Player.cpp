@@ -2,6 +2,7 @@
 #include "../headers/Player.h"
 #define xPos 330
 #define yPos 290
+
 int Player::getPlayerHP() {
     return playerHP;
 }
@@ -15,9 +16,8 @@ std::string Player::setPlayerName(std::string playerName) {
     return playerName;
 }
 
-int Player::setPlayerHP(int playerHP) {
+void Player::setPlayerHP(int playerHP) {
     this->playerHP = playerHP;
-    return playerHP;
 }
 
 int Player::getPlayerAge() {
@@ -32,6 +32,7 @@ int Player::setPlayerAge(int playerAge) {
 Player::Player() {
     this->initSprite();
     this->initTexture();
+    this->setPlayerHP(100); // Initialize HP to a default value
 }
 
 Player::~Player() {
