@@ -1,6 +1,7 @@
 #include <iostream>
 #include "../headers/Player.h"
-
+#define xPos 330
+#define yPos 290
 int Player::getPlayerHP() {
     return playerHP;
 }
@@ -57,5 +58,6 @@ void Player::update() {
 
 void Player::render(sf::RenderTarget& target) {
     this->sprite.setTexture(this->texture);
+    this->sprite.setPosition(sf::Vector2f(xPos, yPos));
     target.draw(this->sprite);
 }
