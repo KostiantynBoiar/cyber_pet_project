@@ -5,9 +5,11 @@ int main()
 {
     /*That's window properties of my game*/
     Game game;
+    Player player;
     while (game.getWindowIsOpen())
     {
         game.update();
+        player.update();
         game.render();
     }
 

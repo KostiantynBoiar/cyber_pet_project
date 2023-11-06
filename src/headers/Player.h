@@ -30,7 +30,7 @@ public:
     void setPlayerHP(int playerHP); // Changed return type to void
     int getPlayerAge();
     int setPlayerAge(int playerAge);
-
+    void updateTexture();
     void playerState();
     void update();
     void render(sf::RenderTarget& target);
