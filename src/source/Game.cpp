@@ -71,7 +71,32 @@ void Game::renderPlayer() {
 
         // Draw the HP text on the screen
         this->window->draw(hpText);
+
+        /*
+         * If PlayerHP < 0 then we will clean previous text and replace it on some kinda "Player has die"
+         * */
+
+        if(playerHP < 0){
+
+            std::cout << "Player has die";
+
+            sf::Text dieText;
+            dieText.setFont(font);
+
+            hpText.setFillColor(sf::Color::Black);
+            std::string dieString = "Player has die ebat' ti lox";
+            dieText.setCharacterSize(20);
+
+            dieText.setFillColor(sf::Color::White);
+            dieText.setPosition(10, 10);
+            dieText.setString(dieString);
+
+            this->window->draw(hpText);
+            this->window->draw(dieText);
+        }
+
     }
+
 }
 
 void Game::initPlayer() {
