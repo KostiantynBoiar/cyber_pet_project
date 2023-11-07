@@ -48,7 +48,8 @@ Player::Player() {
     this->initSprite();
     this->initTexture();
     this->setPlayerHP(100); // Initialize HP to a default value
-    this->hungryLevel = starving;
+    this->hungryLevel = slightlyPeckish;
+    this->sleepLevel = tired;
 }
 
 Player::~Player() {
@@ -75,6 +76,7 @@ int currentTextureIndex = 0;
 void Player::update() {
     updateTexture();
     updateHealth();
+    updateSleep();
 }
 
 void Player::render(sf::RenderTarget& target) {
@@ -101,7 +103,7 @@ void Player::updateHealth() {
             setPlayerHP(getPlayerHP() + 5);
             break;
         case slightlyPeckish:
-            setPlayerHP(getPlayerHP() - 2);
+            setPlayerHP(getPlayerHP() - 0);
             break;
         case ratherHungry:
             setPlayerHP(getPlayerHP() - 5);
@@ -112,6 +114,21 @@ void Player::updateHealth() {
         case dead:
             setPlayerHP(0);
             break;
+    }
+}
+
+void Player::updateSleep() {
+    switch (sleepLevel) {
+        case wideAwake:
+            setPlayerHP(getPlayerHP() + 2);
+        case awake:
+            setPlayerHP(getPlayerHP() + 0);
+        case tired:
+            setPlayerHP(getPlayerHP() - 2);
+        case failingAsleep:
+            setPlayerHP(getPlayerHP() - 4);
+        case collapsed:
+            setPlayerHP(getPlayerHP() - 6);
     }
 }
 

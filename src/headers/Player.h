@@ -27,6 +27,14 @@ private:
         starving,
         dead
     };
+    enum SleepLevel{
+        wideAwake,
+        awake,
+        tired,
+        failingAsleep,
+        collapsed
+    };
+    SleepLevel sleepLevel;
     HungryLevel hungryLevel;
 public:
     Player();
@@ -46,7 +54,9 @@ public:
 
     void update();
     void render(sf::RenderTarget& target);
+
     void updateHealth();
+    void updateSleep();
 };
 
 #endif //CYBER_PET_PROJECT_PLAYER_H
