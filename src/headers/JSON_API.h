@@ -1,8 +1,14 @@
 //
-// Created by kostiantyn on 11/2/23.
+// Created by kostiantyn on 11/7/23.
 //
 
-#ifndef CYBER_PET_PROJECT_CSV_H
-#define CYBER_PET_PROJECT_CSV_H
+#ifndef CYBER_PET_PROJECT_JSON_API_H
+#define CYBER_PET_PROJECT_JSON_API_H
+#include "dist/json/json.h"
 
-#endif //CYBER_PET_PROJECT_CSV_H
+class JSON_API {
+
+};
+
+
+#endif //CYBER_PET_PROJECT_JSON_API_H
