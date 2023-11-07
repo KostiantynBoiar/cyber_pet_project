@@ -87,6 +87,12 @@ void Player::updateTexture() {
     currentTextureIndex = (currentTextureIndex + 1) % 7;
     this->texture.loadFromFile(pathToTextures[currentTextureIndex]);
     std::this_thread::sleep_for(std::chrono::milliseconds(100));
+    if(this->playerHP < 50){
+        this->texture.loadFromFile("/home/kostiantyn/Documents/education/C/cyber-pet-project/src/assets/textures/png/Dead (1).png");
+    }
+    if(this->playerHP < 0){
+        this->texture.loadFromFile("/home/kostiantyn/Documents/education/C/cyber-pet-project/src/assets/textures/png/Dead (4).png");
+    }
 }
 
 void Player::updateHealth() {
