@@ -69,8 +69,6 @@ void Game::pollEvents() {
 
 void Game::renderPlayer() {
     this->player->render(*this->window);
-    sf::Font font;
-
     if(!font.loadFromFile("/home/kostiantyn/Documents/education/C/cyber-pet-project/src/assets/fonts/Raleway-Bold.ttf")){
         std::cout << "Font could not be found";
     }else {
@@ -141,12 +139,3 @@ void Game::renderButtons() {
         button.render(*this->window);
     }
 }
-/* If I try to implement draw player's hp through a function I got error message "segmentation fault"
-sf::Font Game::getFont() {
-    sf::Font font;
-    if(!font.loadFromFile("/home/kostiantyn/Documents/education/C/cyber-pet-project/src/assets/fonts/Raleway-Bold.ttf")){
-        std::cout << "Font could not be found";
-    }
-    return font;
-}
-*/
