@@ -24,7 +24,7 @@ void Game::render() {
 
     // Draw game objects
     this->renderPlayer();
-
+    this->renderButtons();
     this->window->display();
 }
 
@@ -48,9 +48,22 @@ void Game::pollEvents() {
             case sf::Event::Closed:
                 this->window->close();
                 break;
+            case sf::Event::MouseButtonPressed:
+                for (Button& button : buttons) {
+                    if (button.isClicked(*this->window, this->event)) {
+                        // Handle button click here
+                        if (button.getText() == "Feed") {
+                            // Perform the action for the "Feed" button
+                            std::cout << "Feed button clicked" << std::endl;
+                        } else if (button.getText() == "Rest") {
+                            // Perform the action for the "Rest" button
+                            std::cout << "Rest button clicked" << std::endl;
+                        }
+                    }
+                }
+                break;
         }
     }
-
 }
 
 
@@ -104,10 +117,29 @@ void Game::renderPlayer() {
 
 void Game::initPlayer() {
     this->player = new Player();
+    createButtons();
 }
 
 void Game::updatePlayer() {
     this->player->update();
+}
+
+void Game::createButtons() {
+    if (!font.loadFromFile("/home/kostiantyn/Documents/education/C/cyber-pet-project/src/assets/fonts/Raleway-Bold.ttf")) {
+        std::cout << "Font could not be found";
+    } else {
+        Button feedButton(50, 50, 100, 40, font, "Feed");
+        Button restButton(200, 50, 100, 40, font, "Rest");
+
+        buttons.push_back(feedButton);
+        buttons.push_back(restButton);
+    }
+}
+
+void Game::renderButtons() {
+    for (const Button& button : buttons) {
+        button.render(*this->window);
+    }
 }
 /* If I try to implement draw player's hp through a function I got error message "segmentation fault"
 sf::Font Game::getFont() {

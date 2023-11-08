@@ -16,7 +16,11 @@ public:
     Button(float x, float y, float width, float height, sf::Font& font, std::string text);
 
     bool isMouseOver(const sf::RenderWindow& window) const;
+    bool isClicked(const sf::RenderWindow& window, sf::Event event);
+
     void render(sf::RenderWindow& window) const;
+
+    std::string getText() const;
 };
 
 

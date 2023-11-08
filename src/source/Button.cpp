@@ -3,7 +3,9 @@
 //
 
 #include <SFML/Window/Mouse.hpp>
+#include <SFML/Window/Event.hpp>
 #include "../headers/Button.h"
+
 
 Button::Button(float x, float y, float width, float height, sf::Font &font, std::string text) {
     shape.setPosition(sf::Vector2f(x, y));
@@ -26,7 +28,18 @@ bool Button::isMouseOver(const sf::RenderWindow &window) const {
            mousePosition.y >= buttonPosition.y && mousePosition.y <= buttonPosition.y + buttonSize.y;
 }
 
+bool Button::isClicked(const sf::RenderWindow& window, sf::Event event) {
+    if (isMouseOver(window) && event.type == sf::Event::MouseButtonPressed && event.mouseButton.button == sf::Mouse::Left) {
+        return true;
+    }
+    return false;
+}
+
 void Button::render(sf::RenderWindow &window) const {
     window.draw(shape);
     window.draw(text);
+}
+
+std::string Button::getText() const {
+    return text.getString().toAnsiString();
 }
