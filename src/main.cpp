@@ -1,6 +1,7 @@
 #include <SFML/Graphics.hpp>
 #include "source/Game.cpp" /*Here is must be cpp file instead of .h*/
 #include "source/Player.cpp"
+#include "source/Button.cpp"
 int main()
 {
     /*That's window properties of my game*/

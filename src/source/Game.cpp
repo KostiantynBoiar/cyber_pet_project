@@ -1,6 +1,7 @@
 #include <iostream>
 #include <SFML/Graphics/Text.hpp>
 #include "../headers/Game.h"
+#include "../headers/Button.h"
 
 Game::Game() {
     this->initVariables();
@@ -49,12 +50,14 @@ void Game::pollEvents() {
                 break;
         }
     }
+
 }
+
 
 void Game::renderPlayer() {
     this->player->render(*this->window);
-
     sf::Font font;
+
     if(!font.loadFromFile("/home/kostiantyn/Documents/education/C/cyber-pet-project/src/assets/fonts/Raleway-Bold.ttf")){
         std::cout << "Font could not be found";
     }else {
@@ -72,10 +75,10 @@ void Game::renderPlayer() {
         // Draw the HP text on the screen
         this->window->draw(hpText);
 
+
         /*
          * If PlayerHP < 0 then we will clean previous text and replace it on some kinda "Player has die"
          * */
-
         if(playerHP < 0){
 
             std::cout << "Player has die";
