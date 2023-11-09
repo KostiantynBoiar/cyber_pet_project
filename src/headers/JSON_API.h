@@ -10,17 +10,21 @@
 class JSON_API {
 private:
     rapidjson::Document jsonData;
+    std::string filename;
 
-    bool fileExists(const std::string& filename) const;
-    bool loadJsonFromFile(const std::string& filename);
-    void saveJsonToFile(const std::string& filename) const;
-    std::time_t parseDateTime(const std::string& dateTimeStr) const;
+    // Вспомогательные методы
+    bool fileExists() const;
+    bool loadJsonFromFile();
+    void saveJsonToFile() const;
 
 public:
     JSON_API(const std::string& filename);
-
     std::time_t foodTimeDiff() const;
     std::time_t restTimeDiff() const;
+    void updateFoodTime();
+    void updateRestTime();
+    std::time_t parseDateTime(const std::string& dateTimeStr) const;
+
 };
 
 #endif // JSON_API_H

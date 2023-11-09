@@ -2,9 +2,9 @@
 #include "source/Game.cpp" /*Here is must be cpp file instead of .h*/
 #include "source/Player.cpp"
 #include "source/Button.cpp"
+#include "source/JSON_API.cpp"
 int main()
 {
-    /*That's window properties of my game*/
     Game game;
     Player player;
     while (game.getWindowIsOpen())
