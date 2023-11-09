@@ -7,6 +7,9 @@ int main()
 {
     Game game;
     Player player;
+    JSON_API jsonApi("gameFile.json");
+    jsonApi.updateFoodTime();
+    std::cout << jsonApi.getState();
     while (game.getWindowIsOpen())
     {
         game.update();

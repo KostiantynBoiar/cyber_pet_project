@@ -5,9 +5,9 @@
 #include "../headers/JSON_API.h"
 #include <iomanip>
 
+#include <sstream>
 #include <fstream>
 #include <iostream>
-#include <iomanip>
 
 JSON_API::JSON_API(const std::string& filename) : filename(filename) {
     if (fileExists()) {
@@ -50,20 +50,25 @@ void JSON_API::saveJsonToFile() const {
     }
 }
 
+
 std::time_t JSON_API::parseDateTime(const std::string& dateTimeStr) const {
     std::tm timeInfo = {};
-    if (strptime(dateTimeStr.c_str(), "%Y:%m:%d:%H:%M", &timeInfo) == nullptr) {
+    std::istringstream ss(dateTimeStr);
+
+    if (!(ss >> std::get_time(&timeInfo, "%Y-%m-%d %H:%M"))) {
+        ss.clear();
+        ss.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
         std::cerr << "Error parsing date and time: " << dateTimeStr << std::endl;
         return 0;
     }
+
     return std::mktime(&timeInfo);
 }
 
-std::time_t JSON_API::foodTimeDiff() const {
+int JSON_API::foodTimeDiff() const {
     std::string foodTimeStr = jsonData["foodTime"].GetString();
-    std::time_t foodTime = parseDateTime(foodTimeStr);
-    std::time_t currentTime = std::time(nullptr);
-    return currentTime - foodTime;
+    std::cout << foodTimeStr;
+    return 0;
 }
 
 std::time_t JSON_API::restTimeDiff() const {
@@ -103,4 +108,22 @@ void JSON_API::updateRestTime() {
     strftime(buffer, sizeof(buffer), "%Y:%m:%d:%H:%M", timeInfo);
     jsonData["restTime"].SetString(buffer, static_cast<rapidjson::SizeType>(strlen(buffer)));
     saveJsonToFile();
+}
+
+int JSON_API::getState() const {
+    std::time_t foodTimeDifference = foodTimeDiff();
+    std::cout << foodTimeDifference;
+    if (foodTimeDifference > 10 * 60) {
+        return 1;
+    } else if (foodTimeDifference > 20 * 60) {
+        return 2;
+    } else if (foodTimeDifference > 30 * 60) {
+        return 3;
+    } else if (foodTimeDifference > 40 * 60) {
+        return 4;
+    } else if (foodTimeDifference > 50 * 60) {
+        return 5;
+    } else {
+        return 0;
+    }
 }

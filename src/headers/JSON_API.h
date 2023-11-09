@@ -19,12 +19,12 @@ private:
 
 public:
     JSON_API(const std::string& filename);
-    std::time_t foodTimeDiff() const;
+    int foodTimeDiff() const;
     std::time_t restTimeDiff() const;
     void updateFoodTime();
     void updateRestTime();
     std::time_t parseDateTime(const std::string& dateTimeStr) const;
-
+    int getState() const;
 };
 
 #endif // JSON_API_H
