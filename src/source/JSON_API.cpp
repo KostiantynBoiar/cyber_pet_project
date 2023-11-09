@@ -48,19 +48,17 @@ void JSON_API::saveJsonToFile(const std::string& filename) const {
     }
 }
 
-std::time_t JSON_API::parseDateTime(const std::string& dateTimeStr) const {
-
+std::time_t parseDateTime(const std::string& dateTimeStr) {
     std::tm timeInfo = {};
-    std::istringstream ss(dateTimeStr);
 
-    ss >> std::get_time(&timeInfo, "%Y:%m:%d:%H:%M");
-
-    if (ss.fail()) {
+    if (strptime(dateTimeStr.c_str(), "%Y:%m:%d:%H:%M", &timeInfo) == nullptr) {
         std::cerr << "Error parsing date and time: " << dateTimeStr << std::endl;
         return 0;
     }
+
     return std::mktime(&timeInfo);
 }
+
 
 std::time_t JSON_API::foodTimeDiff() const {
     std::string foodTimeStr = jsonData["foodTime"].GetString();
