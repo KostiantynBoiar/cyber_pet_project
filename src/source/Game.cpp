@@ -98,7 +98,7 @@ void Game::renderPlayer() {
             dieText.setFont(font);
 
             hpText.setFillColor(sf::Color::Black);
-            std::string dieString = "Player has die ebat' ti lox";
+            std::string dieString = "Player has die";
             dieText.setCharacterSize(20);
 
             dieText.setFillColor(sf::Color::White);
