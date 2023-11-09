@@ -8,6 +8,7 @@
 #include <sstream>
 #include <fstream>
 #include <iostream>
+#include <chrono>
 
 JSON_API::JSON_API(const std::string& filename) : filename(filename) {
     if (fileExists()) {
@@ -50,7 +51,7 @@ void JSON_API::saveJsonToFile() const {
     }
 }
 
-
+// That's piece of shit that is not working
 std::time_t JSON_API::parseDateTime(const std::string& dateTimeStr) const {
     std::tm timeInfo = {};
     std::istringstream ss(dateTimeStr);
@@ -66,16 +67,14 @@ std::time_t JSON_API::parseDateTime(const std::string& dateTimeStr) const {
 }
 
 int JSON_API::foodTimeDiff() const {
-    std::string foodTimeStr = jsonData["foodTime"].GetString();
-    std::cout << foodTimeStr;
+
     return 0;
 }
 
 std::time_t JSON_API::restTimeDiff() const {
-    std::string restTimeStr = jsonData["restTime"].GetString();
-    std::time_t restTime = parseDateTime(restTimeStr);
-    std::time_t currentTime = std::time(nullptr);
-    return currentTime - restTime;
+
+
+    return 0;
 }
 
 void JSON_API::updateFoodTime() {
@@ -93,7 +92,7 @@ void JSON_API::updateFoodTime() {
 
     jsonData["foodTime"].SetString(buffer, static_cast<rapidjson::SizeType>(strlen(buffer)));
 
-    std::cout << "After updateFoodTime: " << std::endl;
+    std::cout << "After updateFoodTime: " << jsonData["foodTime"].GetString() << std::endl;
     saveJsonToFile();
 }
 
@@ -112,7 +111,7 @@ void JSON_API::updateRestTime() {
 
 int JSON_API::getState() const {
     std::time_t foodTimeDifference = foodTimeDiff();
-    std::cout << foodTimeDifference;
+    std::cout << convertJsonDate(jsonData["foodTime"].GetString()) << std::endl;
     if (foodTimeDifference > 10 * 60) {
         return 1;
     } else if (foodTimeDifference > 20 * 60) {
@@ -126,4 +125,37 @@ int JSON_API::getState() const {
     } else {
         return 0;
     }
+}
+
+std::string JSON_API::convertJsonDate(std::string jsonDate) const {
+    std::string foodTimeStr = jsonData["foodTime"].GetString();
+    std::cout << "Your time is: " << foodTimeStr << std::endl;
+
+    // String to stream
+    std::istringstream iss(foodTimeStr);
+
+    // Declare variables for data
+    int year, month, day, hour, minute;
+
+    // Reading data from stream
+    iss >> year >> month >> day >> hour >> minute;
+
+    // Creating time object
+    std::tm timeStruct = {};
+    timeStruct.tm_year = year - 1900;
+    timeStruct.tm_mon = month - 1;
+    timeStruct.tm_mday = day;
+    timeStruct.tm_hour = hour;
+    timeStruct.tm_min = minute;
+
+    // Convert to a time object using std::chrono
+    auto timePoint = std::chrono::system_clock::from_time_t(std::mktime(&timeStruct));
+
+    // Convert data to a time
+    std::ostringstream oss;
+    oss << std::put_time(&timeStruct, "%Y-%m-%d %H:%M:%S");
+
+    std::string formattedTime = oss.str();
+
+    return formattedTime;
 }

@@ -25,6 +25,7 @@ public:
     void updateRestTime();
     std::time_t parseDateTime(const std::string& dateTimeStr) const;
     int getState() const;
+    std::string convertJsonDate(std::string jsonDate) const;
 };
 
 #endif // JSON_API_H
