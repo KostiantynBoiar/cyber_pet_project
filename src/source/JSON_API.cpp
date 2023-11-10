@@ -3,13 +3,13 @@
 //
 
 #include "../headers/JSON_API.h"
-#include <iomanip>
-
-#include <sstream>
 #include <fstream>
 #include <iostream>
 #include <chrono>
 #include <vector>
+
+#define MINUTES_IN_DAY 1440
+#define MINUTES_IN_HOURS 60
 
 JSON_API::JSON_API(const std::string& filename) : filename(filename) {
     if (fileExists()) {
@@ -20,6 +20,15 @@ JSON_API::JSON_API(const std::string& filename) : filename(filename) {
         jsonData.SetObject();
         saveJsonToFile();
     }
+}
+
+bool JSON_API::isInteger(const std::string &s) {
+    for (char c : s) {
+        if (!std::isdigit(c)) {
+            return false;
+        }
+    }
+    return true;
 }
 
 bool JSON_API::fileExists() const {
@@ -50,26 +59,6 @@ void JSON_API::saveJsonToFile() const {
     } else {
         std::cerr << "Error saving JSON to file: " << filename << std::endl;
     }
-}
-
-int JSON_API::parseDateTime(const std::string& dateTimeStr) const {
-    std::string delimiter = ":";
-    size_t pos_start = 0, pos_end, delim_len = delimiter.length();
-    std::string token;
-    std::vector<std::string> res;
-
-    while ((pos_end = dateTimeStr.find(delimiter, pos_start)) != std::string::npos) {
-        token = dateTimeStr.substr(pos_start, pos_end - pos_start);
-        pos_start = pos_end + delim_len;
-        res.push_back(token);
-    }
-    /*
-     * res[0] - day
-     * res[1] - hour
-     * res[2] - minute*/
-    res.push_back (dateTimeStr.substr(pos_start));
-
-    return 0;
 }
 
 int JSON_API::foodTimeDiff() const {
@@ -138,3 +127,25 @@ std::string JSON_API::convertJsonDate(const std::string& jsonDate) const {
     std::cout << "Your time is: " << foodTimeStr << std::endl;
     return foodTimeStr;
 }
+
+int JSON_API::parseDateTime(const std::string &dateTimeStr) const {
+    std::string delimiter = ":";
+    size_t pos_start = 0, pos_end, delim_len = delimiter.length();
+    std::string token;
+    std::vector<std::string> res;
+
+    while ((pos_end = dateTimeStr.find(delimiter, pos_start)) != std::string::npos) {
+        token = dateTimeStr.substr(pos_start, pos_end - pos_start);
+        pos_start = pos_end + delim_len;
+        res.push_back(token);
+    }
+
+    res.push_back(dateTimeStr.substr(pos_start));
+
+    int minSum = std::stoi(res[0]) * MINUTES_IN_DAY + std::stoi(res[1]) * MINUTES_IN_HOURS + std::stoi(res[2]);
+    std::cout << minSum;
+    return minSum;
+
+}
+
+

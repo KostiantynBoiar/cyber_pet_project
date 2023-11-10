@@ -16,6 +16,7 @@ private:
     bool fileExists() const;
     bool loadJsonFromFile();
     void saveJsonToFile() const;
+    static bool isInteger(const std::string& s) ;
 
 public:
     JSON_API(const std::string& filename);
