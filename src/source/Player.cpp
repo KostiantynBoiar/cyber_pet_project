@@ -2,9 +2,11 @@
 #include "../headers/Player.h"
 #include <chrono>
 #include <thread>
-
+#include "JSON_API.cpp"
 #define xPos 330
 #define yPos 290
+
+JSON_API json("gameFile.json");
 
 static std::string pathToTextures[] = {"/home/kostiantyn/Documents/education/C/cyber-pet-project/src/assets/textures/png/Idle (1).png",
                                        "/home/kostiantyn/Documents/education/C/cyber-pet-project/src/assets/textures/png/Idle (2).png",
@@ -118,6 +120,7 @@ void Player::updateHealth() {
 }
 
 void Player::updateSleep() {
+
     switch (sleepLevel) {
         case wideAwake:
             setPlayerHP(getPlayerHP() + 2);
