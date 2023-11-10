@@ -107,17 +107,17 @@ void JSON_API::updateRestTime() {
 }
 
 int JSON_API::getFoodState() {
-    std::time_t foodTimeDifference = foodTimeDiff();
-    std::cout << parseDateTime(convertJsonDate(jsonData["foodTime"].GetString())) << std::endl;
-    if (foodTimeDifference > 10 * 60) {
+    int foodTimeDifference = foodTimeDiff();
+    std::cout << foodTimeDiff() << std::endl;
+    if (foodTimeDifference > 10 && foodTimeDifference < 19) {
         return 1;
-    } else if (foodTimeDifference > 20 * 60) {
+    } else if (foodTimeDifference > 20 && foodTimeDifference < 29) {
         return 2;
-    } else if (foodTimeDifference > 30 * 60) {
+    } else if (foodTimeDifference > 30 && foodTimeDifference < 39) {
         return 3;
-    } else if (foodTimeDifference > 40 * 60) {
+    } else if (foodTimeDifference > 40 && foodTimeDifference < 49) {
         return 4;
-    } else if (foodTimeDifference > 50 * 60) {
+    } else if (foodTimeDifference > 50) {
         return 5;
     } else {
         return 0;
