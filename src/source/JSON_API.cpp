@@ -7,6 +7,7 @@
 #include <iostream>
 #include <chrono>
 #include <vector>
+#include <algorithm>
 
 #define MINUTES_IN_DAY 1440
 #define MINUTES_IN_HOURS 60
@@ -132,17 +133,32 @@ int JSON_API::parseDateTime(const std::string &dateTimeStr) const {
     std::string delimiter = ":";
     size_t pos_start = 0, pos_end, delim_len = delimiter.length();
     std::string token;
-    std::vector<std::string> res;
+    std::vector<int> res;
 
     while ((pos_end = dateTimeStr.find(delimiter, pos_start)) != std::string::npos) {
         token = dateTimeStr.substr(pos_start, pos_end - pos_start);
+
+        token.erase(std::remove_if(token.begin(), token.end(), [](unsigned char c) { return !std::isdigit(c); }), token.end());
+
         pos_start = pos_end + delim_len;
-        res.push_back(token);
+
+        if (!token.empty()) {
+            res.push_back(stoi(token));
+        }
     }
 
-    res.push_back(dateTimeStr.substr(pos_start));
+    token = dateTimeStr.substr(pos_start);
+    token.erase(std::remove_if(token.begin(), token.end(), [](unsigned char c) { return !std::isdigit(c); }), token.end());
+    std::cout << token << std::endl;
 
-    int minSum = std::stoi(res[0]) * MINUTES_IN_DAY + std::stoi(res[1]) * MINUTES_IN_HOURS + std::stoi(res[2]);
+    if (!token.empty()) {
+        res.push_back(stoi(token));
+    }
+
+    for (int value : res) {
+        std::cout << value << std::endl;
+    }
+    int minSum = res[0] * MINUTES_IN_DAY + res[1] * MINUTES_IN_HOURS + res[2];
     std::cout << minSum;
     return minSum;
 
