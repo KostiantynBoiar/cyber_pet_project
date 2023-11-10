@@ -20,13 +20,14 @@ private:
 
 public:
     JSON_API(const std::string& filename);
-    int foodTimeDiff() const;
+    int foodTimeDiff();
     std::time_t restTimeDiff() const;
     void updateFoodTime();
     void updateRestTime();
     int parseDateTime(const std::string& dateTimeStr) const;
-    int getState() const;
+    int getFoodState();
     std::string convertJsonDate(const std::string& jsonDate) const;
+    std::string getActualDate();
 };
 
 #endif // JSON_API_H

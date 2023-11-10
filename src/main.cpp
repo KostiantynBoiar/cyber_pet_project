@@ -8,8 +8,8 @@ int main()
     Game game;
     Player player;
     JSON_API jsonApi("gameFile.json");
-    jsonApi.updateFoodTime();
-    std::cout << jsonApi.getState();
+    jsonApi.getActualDate();
+    std::cout << jsonApi.foodTimeDiff();
     while (game.getWindowIsOpen())
     {
         game.update();

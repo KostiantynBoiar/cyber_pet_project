@@ -11,6 +11,8 @@
 
 #define MINUTES_IN_DAY 1440
 #define MINUTES_IN_HOURS 60
+#define MINUTES_IN_YEAR 525600
+#define MINUTES_IN_MONTH 43200
 
 JSON_API::JSON_API(const std::string& filename) : filename(filename) {
     if (fileExists()) {
@@ -62,9 +64,9 @@ void JSON_API::saveJsonToFile() const {
     }
 }
 
-int JSON_API::foodTimeDiff() const {
-
-    return 0;
+int JSON_API::foodTimeDiff() {
+    int result = parseDateTime(convertJsonDate(getActualDate())) - parseDateTime(jsonData["foodTime"].GetString());
+    return result;
 }
 
 std::time_t JSON_API::restTimeDiff() const {
@@ -105,7 +107,7 @@ void JSON_API::updateRestTime() {
     saveJsonToFile();
 }
 
-int JSON_API::getState() const {
+int JSON_API::getFoodState() {
     std::time_t foodTimeDifference = foodTimeDiff();
     std::cout << parseDateTime(convertJsonDate(jsonData["foodTime"].GetString())) << std::endl;
     if (foodTimeDifference > 10 * 60) {
@@ -124,7 +126,7 @@ int JSON_API::getState() const {
 }
 
 std::string JSON_API::convertJsonDate(const std::string& jsonDate) const {
-    std::string foodTimeStr = jsonData["foodTime"].GetString();
+    std::string foodTimeStr = jsonDate;
     std::cout << "Your time is: " << foodTimeStr << std::endl;
     return foodTimeStr;
 }
@@ -158,10 +160,29 @@ int JSON_API::parseDateTime(const std::string &dateTimeStr) const {
     for (int value : res) {
         std::cout << value << std::endl;
     }
-    int minSum = res[0] * MINUTES_IN_DAY + res[1] * MINUTES_IN_HOURS + res[2];
-    std::cout << minSum;
+    int minSum = (res[0] - 2022) * MINUTES_IN_YEAR + res[1] * MINUTES_IN_MONTH + res[2] * MINUTES_IN_DAY + res[3] * MINUTES_IN_HOURS + res[4];
     return minSum;
 
+}
+
+std::string JSON_API::getActualDate(){
+    if (!jsonData.HasMember("actualTime")) {
+        jsonData.AddMember("actualTime", "", jsonData.GetAllocator());
+    }
+
+    std::time_t currentTime = std::time(nullptr);
+    std::tm* timeInfo = std::localtime(&currentTime);
+    char buffer[20];
+    strftime(buffer, sizeof(buffer), "%Y:%m:%d:%H:%M", timeInfo);
+
+    std::cout << "Before updateFoodTime: " << std::endl;
+    saveJsonToFile();
+
+    jsonData["actualTime"].SetString(buffer, static_cast<rapidjson::SizeType>(strlen(buffer)));
+
+    std::cout << "After updateFoodTime: " << jsonData["actualTime"].GetString() << std::endl;
+    saveJsonToFile();
+    return jsonData["actualTime"].GetString();
 }
 
 
