@@ -21,7 +21,7 @@ private:
 public:
     JSON_API(const std::string& filename);
     int foodTimeDiff();
-    std::time_t restTimeDiff() const;
+    int restTimeDiff();
     void updateFoodTime();
     void updateRestTime();
     int parseDateTime(const std::string& dateTimeStr) const;

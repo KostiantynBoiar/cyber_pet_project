@@ -69,10 +69,9 @@ int JSON_API::foodTimeDiff() {
     return result;
 }
 
-std::time_t JSON_API::restTimeDiff() const {
-
-
-    return 0;
+int JSON_API::restTimeDiff() {
+    int result = parseDateTime(convertJsonDate(getActualDate())) - parseDateTime(jsonData["restTime"].GetString());
+    return result;
 }
 
 void JSON_API::updateFoodTime() {
@@ -175,12 +174,10 @@ std::string JSON_API::getActualDate(){
     char buffer[20];
     strftime(buffer, sizeof(buffer), "%Y:%m:%d:%H:%M", timeInfo);
 
-    std::cout << "Before updateFoodTime: " << std::endl;
     saveJsonToFile();
 
     jsonData["actualTime"].SetString(buffer, static_cast<rapidjson::SizeType>(strlen(buffer)));
 
-    std::cout << "After updateFoodTime: " << jsonData["actualTime"].GetString() << std::endl;
     saveJsonToFile();
     return jsonData["actualTime"].GetString();
 }
