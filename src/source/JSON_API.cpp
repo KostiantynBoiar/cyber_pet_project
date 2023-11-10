@@ -9,6 +9,7 @@
 #include <fstream>
 #include <iostream>
 #include <chrono>
+#include <vector>
 
 JSON_API::JSON_API(const std::string& filename) : filename(filename) {
     if (fileExists()) {
@@ -51,19 +52,24 @@ void JSON_API::saveJsonToFile() const {
     }
 }
 
-// That's piece of shit that is not working
-std::time_t JSON_API::parseDateTime(const std::string& dateTimeStr) const {
-    std::tm timeInfo = {};
-    std::istringstream ss(dateTimeStr);
+int JSON_API::parseDateTime(const std::string& dateTimeStr) const {
+    std::string delimiter = ":";
+    size_t pos_start = 0, pos_end, delim_len = delimiter.length();
+    std::string token;
+    std::vector<std::string> res;
 
-    if (!(ss >> std::get_time(&timeInfo, "%Y-%m-%d %H:%M"))) {
-        ss.clear();
-        ss.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
-        std::cerr << "Error parsing date and time: " << dateTimeStr << std::endl;
-        return 0;
+    while ((pos_end = dateTimeStr.find(delimiter, pos_start)) != std::string::npos) {
+        token = dateTimeStr.substr(pos_start, pos_end - pos_start);
+        pos_start = pos_end + delim_len;
+        res.push_back(token);
     }
+    /*
+     * res[0] - day
+     * res[1] - hour
+     * res[2] - minute*/
+    res.push_back (dateTimeStr.substr(pos_start));
 
-    return std::mktime(&timeInfo);
+    return 0;
 }
 
 int JSON_API::foodTimeDiff() const {
@@ -111,7 +117,7 @@ void JSON_API::updateRestTime() {
 
 int JSON_API::getState() const {
     std::time_t foodTimeDifference = foodTimeDiff();
-    std::cout << convertJsonDate(jsonData["foodTime"].GetString()) << std::endl;
+    std::cout << parseDateTime(convertJsonDate(jsonData["foodTime"].GetString())) << std::endl;
     if (foodTimeDifference > 10 * 60) {
         return 1;
     } else if (foodTimeDifference > 20 * 60) {
@@ -127,35 +133,8 @@ int JSON_API::getState() const {
     }
 }
 
-std::string JSON_API::convertJsonDate(std::string jsonDate) const {
+std::string JSON_API::convertJsonDate(const std::string& jsonDate) const {
     std::string foodTimeStr = jsonData["foodTime"].GetString();
     std::cout << "Your time is: " << foodTimeStr << std::endl;
-
-    // String to stream
-    std::istringstream iss(foodTimeStr);
-
-    // Declare variables for data
-    int year, month, day, hour, minute;
-
-    // Reading data from stream
-    iss >> year >> month >> day >> hour >> minute;
-
-    // Creating time object
-    std::tm timeStruct = {};
-    timeStruct.tm_year = year - 1900;
-    timeStruct.tm_mon = month - 1;
-    timeStruct.tm_mday = day;
-    timeStruct.tm_hour = hour;
-    timeStruct.tm_min = minute;
-
-    // Convert to a time object using std::chrono
-    auto timePoint = std::chrono::system_clock::from_time_t(std::mktime(&timeStruct));
-
-    // Convert data to a time
-    std::ostringstream oss;
-    oss << std::put_time(&timeStruct, "%Y-%m-%d %H:%M:%S");
-
-    std::string formattedTime = oss.str();
-
-    return formattedTime;
+    return foodTimeStr;
 }
