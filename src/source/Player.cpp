@@ -6,7 +6,6 @@
 #define xPos 330
 #define yPos 290
 
-JSON_API json("gameFile.json");
 
 static std::string pathToTextures[] = {"/home/kostiantyn/Documents/education/C/cyber-pet-project/src/assets/textures/png/Idle (1).png",
                                        "/home/kostiantyn/Documents/education/C/cyber-pet-project/src/assets/textures/png/Idle (2).png",
@@ -50,7 +49,19 @@ Player::Player() {
     this->initSprite();
     this->initTexture();
     this->setPlayerHP(100); // Initialize HP to a default value
-    this->hungryLevel = slightlyPeckish;
+    switch (json.getFoodState()) {
+        case 1:
+            this->hungryLevel = wellFed;
+        case 2:
+            this->hungryLevel = slightlyPeckish;
+        case 3:
+            this->hungryLevel = ratherHungry;
+        case 4:
+            this->hungryLevel = starving;
+        case 5:
+            this->hungryLevel = dead;
+
+    }
     this->sleepLevel = tired;
 }
 
@@ -103,15 +114,19 @@ void Player::updateHealth() {
     switch (hungryLevel) {
         case wellFed:
             setPlayerHP(getPlayerHP() + 5);
+            std::this_thread::sleep_for(std::chrono::seconds (100));
             break;
         case slightlyPeckish:
             setPlayerHP(getPlayerHP() - 0);
+            std::this_thread::sleep_for(std::chrono::seconds (100));
             break;
         case ratherHungry:
             setPlayerHP(getPlayerHP() - 5);
+            std::this_thread::sleep_for(std::chrono::seconds (100));
             break;
         case starving:
             setPlayerHP(getPlayerHP() - 10);
+            std::this_thread::sleep_for(std::chrono::seconds (100));
             break;
         case dead:
             setPlayerHP(0);
