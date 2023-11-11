@@ -9,7 +9,7 @@
 #include <SFML/Window/Event.hpp>
 #include "Player.h"
 #include "Button.h"
-
+#include "JSON_API.h"
 /*Header of class that acts the game engine*/
 
 class Game {

@@ -22,45 +22,22 @@ int Player::getPlayerHP() {
     return playerHP;
 }
 
-std::string Player::getPlayerName() {
-    return playerName;
-}
-
-std::string Player::setPlayerName(std::string playerName) {
-    this->playerName = playerName;
-    return playerName;
-}
-
 void Player::setPlayerHP(int playerHP) {
     this->playerHP = playerHP;
-}
-
-int Player::getPlayerAge() {
-    return playerAge;
-}
-
-int Player::setPlayerAge(int playerAge) {
-    this->playerAge = playerAge;
-    return playerAge;
 }
 
 Player::Player() {
     this->initSprite();
     this->initTexture();
     this->setPlayerHP(100); // Initialize HP to a default value
-    this->hungryLevel = wellFed;
 }
 
 Player::~Player() {
 
 }
 
-void Player::playerState() {
-    // Implement the playerState method if needed
-}
 
 void Player::initSprite() {
-    // Initialize the sprite if necessary
 }
 
 void Player::initTexture() {
@@ -73,6 +50,7 @@ void Player::initTexture() {
 int currentTextureIndex = 0;
 
 void Player::update() {
+
     updateTexture();
     updateHealth();
     updateSleep();
@@ -98,20 +76,22 @@ void Player::updateTexture() {
 
 void Player::updateHealth() {
     JSON_API jsonApi("gameFile.json");
-    updateHungryLevel(jsonApi.getFoodState());
+
+    if(getPlayerHP() > 99){
+        setPlayerHP(100);
+    }
     switch (hungryLevel) {
         case wellFed:
             setPlayerHP(getPlayerHP() + 5);
             break;
         case slightlyPeckish:
-            setPlayerHP(getPlayerHP() - 0);
+            setPlayerHP(getPlayerHP() - 2);
             break;
         case ratherHungry:
             setPlayerHP(getPlayerHP() - 5);
             break;
         case starving:
             setPlayerHP(getPlayerHP() - 10);
-            std::this_thread::sleep_for(std::chrono::seconds (100));
             break;
         case dead:
             setPlayerHP(0);
@@ -123,37 +103,18 @@ void Player::updateSleep() {
 
     switch (sleepLevel) {
         case wideAwake:
-            setPlayerHP(getPlayerHP() + 2);
+            setPlayerHP(getPlayerHP() + 0);
         case awake:
             setPlayerHP(getPlayerHP() + 0);
         case tired:
-            setPlayerHP(getPlayerHP() - 2);
+            setPlayerHP(getPlayerHP() - 0);
         case failingAsleep:
-            setPlayerHP(getPlayerHP() - 4);
+            setPlayerHP(getPlayerHP() - 0);
         case collapsed:
-            setPlayerHP(getPlayerHP() - 6);
+            setPlayerHP(getPlayerHP() - 0);
     }
 }
 
 void Player::updateHungryLevel(int foodState) {
-    switch (foodState) {
-        case 1:
-            this->hungryLevel = wellFed;
-            break;
-        case 2:
-            this->hungryLevel = slightlyPeckish;
-            break;
-        case 3:
-            this->hungryLevel = ratherHungry;
-            break;
-        case 4:
-            this->hungryLevel = starving;
-            break;
-        case 5:
-            this->hungryLevel = dead;
-            break;
-        default:
-            // Handle any other cases or set a default value if needed
-            break;
-    }
+
 }

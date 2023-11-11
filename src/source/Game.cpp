@@ -3,6 +3,7 @@
 #include "../headers/Game.h"
 #include "../headers/Button.h"
 
+JSON_API jsonApi("gameFile.json");
 Game::Game() {
     this->initVariables();
     this->initPlayer();
@@ -53,7 +54,8 @@ void Game::pollEvents() {
                     if (button.isClicked(*this->window, this->event)) {
                         // Handle button click here
                         if (button.getText() == "Feed") {
-                            // Perform the action for the "Feed" button
+                            jsonApi.updateFoodTime();
+                            player->setPlayerHP(100);
                             std::cout << "Feed button clicked" << std::endl;
                         } else if (button.getText() == "Rest") {
                             // Perform the action for the "Rest" button
