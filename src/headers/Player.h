@@ -6,7 +6,7 @@
 #include <SFML/Graphics/Sprite.hpp>
 #include <SFML/Graphics/Texture.hpp>
 #include <SFML/Graphics/RenderTarget.hpp>
-
+#include "JSON_API.h"
 class Player {
 
 private:
@@ -18,6 +18,7 @@ private:
     int playerAge;
 
     void initSprite();
+
     void initTexture();
 
     enum HungryLevel {
@@ -27,7 +28,7 @@ private:
         starving,
         dead
     };
-    enum SleepLevel{
+    enum SleepLevel {
         wideAwake,
         awake,
         tired,
@@ -38,25 +39,33 @@ private:
     HungryLevel hungryLevel;
 public:
     Player();
+
     virtual ~Player();
 
     std::string getPlayerName();
+
     std::string setPlayerName(std::string playerName);
 
     int getPlayerHP();
+
     void setPlayerHP(int playerHP); // Changed return type to void
 
     int getPlayerAge();
+
     int setPlayerAge(int playerAge);
 
     void updateTexture();
+
     void playerState();
 
     void update();
-    void render(sf::RenderTarget& target);
+
+    void render(sf::RenderTarget &target);
 
     void updateHealth();
-    void updateSleep();
-};
 
+    void updateSleep();
+
+    void updateHungryLevel(int foodState);
+};
 #endif //CYBER_PET_PROJECT_PLAYER_H

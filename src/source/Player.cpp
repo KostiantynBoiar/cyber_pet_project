@@ -2,7 +2,6 @@
 #include "../headers/Player.h"
 #include <chrono>
 #include <thread>
-#include "JSON_API.cpp"
 #define xPos 330
 #define yPos 290
 
@@ -49,20 +48,7 @@ Player::Player() {
     this->initSprite();
     this->initTexture();
     this->setPlayerHP(100); // Initialize HP to a default value
-    switch (json.getFoodState()) {
-        case 1:
-            this->hungryLevel = wellFed;
-        case 2:
-            this->hungryLevel = slightlyPeckish;
-        case 3:
-            this->hungryLevel = ratherHungry;
-        case 4:
-            this->hungryLevel = starving;
-        case 5:
-            this->hungryLevel = dead;
-
-    }
-    this->sleepLevel = tired;
+    this->hungryLevel = wellFed;
 }
 
 Player::~Player() {
@@ -78,8 +64,8 @@ void Player::initSprite() {
 }
 
 void Player::initTexture() {
-        if (!this->texture.loadFromFile(pathToTextures[0])) {
-            std::cout << "ERROR: PLAYER TEXTURE COULD NOT LOAD FROM FILE\n";
+    if (!this->texture.loadFromFile(pathToTextures[0])) {
+        std::cout << "ERROR: PLAYER TEXTURE COULD NOT LOAD FROM FILE\n";
     }
 
 
@@ -111,18 +97,17 @@ void Player::updateTexture() {
 }
 
 void Player::updateHealth() {
+    JSON_API jsonApi("gameFile.json");
+    updateHungryLevel(jsonApi.getFoodState());
     switch (hungryLevel) {
         case wellFed:
             setPlayerHP(getPlayerHP() + 5);
-            std::this_thread::sleep_for(std::chrono::seconds (100));
             break;
         case slightlyPeckish:
             setPlayerHP(getPlayerHP() - 0);
-            std::this_thread::sleep_for(std::chrono::seconds (100));
             break;
         case ratherHungry:
             setPlayerHP(getPlayerHP() - 5);
-            std::this_thread::sleep_for(std::chrono::seconds (100));
             break;
         case starving:
             setPlayerHP(getPlayerHP() - 10);
@@ -150,3 +135,25 @@ void Player::updateSleep() {
     }
 }
 
+void Player::updateHungryLevel(int foodState) {
+    switch (foodState) {
+        case 1:
+            this->hungryLevel = wellFed;
+            break;
+        case 2:
+            this->hungryLevel = slightlyPeckish;
+            break;
+        case 3:
+            this->hungryLevel = ratherHungry;
+            break;
+        case 4:
+            this->hungryLevel = starving;
+            break;
+        case 5:
+            this->hungryLevel = dead;
+            break;
+        default:
+            // Handle any other cases or set a default value if needed
+            break;
+    }
+}
