@@ -2,9 +2,12 @@ cmake_minimum_required(VERSION 3.26)
 project(cyber_pet_project)
 
 set(CMAKE_CXX_STANDARD 17)
-#src/SFML-2.6.0-linux-gcc-64-bit/SFML-2.6.0/include/SFML/OpenGL.hpp
-add_executable(cyber_pet_project src/main.cpp
 
+find_package(SFML 2.5 COMPONENTS graphics window system REQUIRED)
+include_directories(${SFML_INCLUDE_DIRS})
+
+set(SOURCES
+        src/main.cpp
         src/source/Player.cpp
         src/headers/Player.h
         src/source/Game.cpp
@@ -13,6 +16,17 @@ add_executable(cyber_pet_project src/main.cpp
         src/headers/JSON_API.h
         src/source/Button.cpp
         src/headers/Button.h
-        src/source/Button.cpp
-        src/headers/Button.h
 )
+
+add_executable(cyber_pet_project ${SOURCES})
+
+target_link_libraries(cyber_pet_project PRIVATE sfml-graphics sfml-window sfml-system)
+
+if(WIN32)
+    target_compile_options(cyber_pet_project PRIVATE /EHsc)
+
+    add_custom_command(TARGET cyber_pet_project POST_BUILD
+            COMMAND ${CMAKE_COMMAND} -E copy_directory
+            "${SFML_DIR}/../../../bin"
+            $<TARGET_FILE_DIR:cyber_pet_project>)
+endif()
