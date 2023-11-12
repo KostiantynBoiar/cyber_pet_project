@@ -132,7 +132,6 @@ int JSON_API::getFoodState() {
 
 std::string JSON_API::convertJsonDate(const std::string& jsonDate) const {
     std::string foodTimeStr = jsonDate;
-    std::cout << "Your time is: " << foodTimeStr << std::endl;
     return foodTimeStr;
 }
 
@@ -156,15 +155,11 @@ int JSON_API::parseDateTime(const std::string &dateTimeStr) const {
 
     token = dateTimeStr.substr(pos_start);
     token.erase(std::remove_if(token.begin(), token.end(), [](unsigned char c) { return !std::isdigit(c); }), token.end());
-    std::cout << token << std::endl;
 
     if (!token.empty()) {
         res.push_back(stoi(token));
     }
 
-    for (int value : res) {
-        std::cout << value << std::endl;
-    }
     int minSum = (res[0] - 2022) * MINUTES_IN_YEAR + res[1] * MINUTES_IN_MONTH + res[2] * MINUTES_IN_DAY + res[3] * MINUTES_IN_HOURS + res[4];
     return minSum;
 
@@ -186,6 +181,24 @@ std::string JSON_API::getActualDate(){
 
     saveJsonToFile();
     return jsonData["actualTime"].GetString();
+}
+
+int JSON_API::getRestState() {
+    int restTimeDifference = restTimeDiff();
+    std::cout << restTimeDiff() << std::endl;
+    if (restTimeDifference > 10 && restTimeDifference < 19) {
+        return 1;
+    } else if (restTimeDifference > 20 && restTimeDifference < 29) {
+        return 2;
+    } else if (restTimeDifference > 30 && restTimeDifference < 39) {
+        return 3;
+    } else if (restTimeDifference > 40 && restTimeDifference < 49) {
+        return 4;
+    } else if (restTimeDifference > 50) {
+        return 5;
+    } else {
+        return 0;
+    }
 }
 
 

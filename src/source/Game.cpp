@@ -59,8 +59,9 @@ void Game::pollEvents() {
                             player->setHungryLevel();
                             std::cout << "Feed button clicked" << std::endl;
                         } else if (button.getText() == "Rest") {
-                            // Perform the action for the "Rest" button
-                            std::cout << "Rest button clicked" << std::endl;
+                            jsonApi.updateRestTime();
+                            player->setPlayerHP(100);
+                            player->setRestLevel();
                         }
                     }
                 }

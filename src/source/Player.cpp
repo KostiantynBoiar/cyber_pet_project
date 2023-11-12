@@ -32,6 +32,7 @@ Player::Player() {
     this->setPlayerHP(100); // Initialize HP to a default value
     this->updateCounter = 0;
     this->hungryLevel = wellFed;
+    this->sleepLevel = wideAwake;
     this->lastHealthUpdateTime = std::chrono::steady_clock::now();
 }
 
@@ -55,12 +56,13 @@ int currentTextureIndex = 0;
 void Player::update() {
 
     updateTexture();
-    updateSleep();
 
     updateCounter++;
     JSON_API jsonApi("gameFile.json");
-    if (updateCounter >= 10) {
+    if (updateCounter >= 100) {
         updateHungryLevel(jsonApi.getFoodState());
+        updateRestLevel(jsonApi.getRestState());
+        updateSleep();
         updateHealth();
         lastHealthUpdateTime = std::chrono::steady_clock::now();
         updateCounter = 0;
@@ -109,15 +111,15 @@ void Player::updateSleep() {
 
     switch (sleepLevel) {
         case wideAwake:
-            setPlayerHP(getPlayerHP() + 0);
+            setPlayerHP(getPlayerHP() + 5);
         case awake:
             setPlayerHP(getPlayerHP() + 0);
         case tired:
-            setPlayerHP(getPlayerHP() - 0);
+            setPlayerHP(getPlayerHP() - 2);
         case failingAsleep:
-            setPlayerHP(getPlayerHP() - 0);
+            setPlayerHP(getPlayerHP() - 4);
         case collapsed:
-            setPlayerHP(getPlayerHP() - 0);
+            setPlayerHP(getPlayerHP() - 10);
     }
 }
 
@@ -144,3 +146,23 @@ void Player::updateHungryLevel(int foodState) {
 void Player::setHungryLevel() {
     this->hungryLevel = wellFed;
 }
+
+void Player::updateRestLevel(int restState) {
+    switch(restState){
+        case 1:
+            sleepLevel = wideAwake;
+        case 2:
+            sleepLevel = awake;
+        case 3:
+            sleepLevel = tired;
+        case 4:
+            sleepLevel = failingAsleep;
+        case 5:
+            sleepLevel = collapsed;
+    }
+}
+
+void Player::setRestLevel() {
+    this->sleepLevel = wideAwake;
+}
+

@@ -10,7 +10,7 @@ int main()
     JSON_API jsonApi("gameFile.json");
 
     jsonApi.getActualDate();
-    jsonApi.updateRestTime();
+    std::cout << jsonApi.restTimeDiff() << std::endl << jsonApi.foodTimeDiff();
     while (game.getWindowIsOpen())
     {
         game.update();

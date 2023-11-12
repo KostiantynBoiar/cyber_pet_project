@@ -28,6 +28,7 @@ public:
     int getFoodState();
     std::string convertJsonDate(const std::string& jsonDate) const;
     std::string getActualDate();
+    int getRestState();
 };
 
 #endif // JSON_API_H

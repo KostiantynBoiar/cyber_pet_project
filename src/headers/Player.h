@@ -73,5 +73,7 @@ public:
     void updateHungryLevel(int foodState);
 
     void setHungryLevel();
+    void setRestLevel();
+    void updateRestLevel(int restState);
 };
 #endif //CYBER_PET_PROJECT_PLAYER_H
