@@ -102,7 +102,13 @@ void JSON_API::updateRestTime() {
     std::tm* timeInfo = std::localtime(&currentTime);
     char buffer[20];
     strftime(buffer, sizeof(buffer), "%Y:%m:%d:%H:%M", timeInfo);
+
+    std::cout << "Before restTime: " << std::endl;
+    saveJsonToFile();
+
     jsonData["restTime"].SetString(buffer, static_cast<rapidjson::SizeType>(strlen(buffer)));
+
+    std::cout << "After restTime: " << jsonData["restTime"].GetString() << std::endl;
     saveJsonToFile();
 }
 

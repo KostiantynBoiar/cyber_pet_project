@@ -86,7 +86,6 @@ void Player::updateTexture() {
 }
 
 void Player::updateHealth() {
-    std::cout << this->hungryLevel << std::endl;
     switch (hungryLevel) {
         case wellFed:
             setPlayerHP(getPlayerHP() + 5);
