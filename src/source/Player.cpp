@@ -59,10 +59,10 @@ void Player::update() {
 
     updateCounter++;
     JSON_API jsonApi("gameFile.json");
-    if (updateCounter >= 100) {
+    if (updateCounter >= 10) {
         updateHungryLevel(jsonApi.getFoodState());
         updateRestLevel(jsonApi.getRestState());
-        updateSleep();
+        //updateSleep();
         updateHealth();
         lastHealthUpdateTime = std::chrono::steady_clock::now();
         updateCounter = 0;
@@ -115,7 +115,7 @@ void Player::updateSleep() {
         case awake:
             setPlayerHP(getPlayerHP() + 0);
         case tired:
-            setPlayerHP(getPlayerHP() - 2);
+            setPlayerHP(getPlayerHP() - 1);
         case failingAsleep:
             setPlayerHP(getPlayerHP() - 4);
         case collapsed:
