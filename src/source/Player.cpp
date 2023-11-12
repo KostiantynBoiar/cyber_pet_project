@@ -58,8 +58,9 @@ void Player::update() {
     updateSleep();
 
     updateCounter++;
-
+    JSON_API jsonApi("gameFile.json");
     if (updateCounter >= 10) {
+        updateHungryLevel(jsonApi.getFoodState());
         updateHealth();
         lastHealthUpdateTime = std::chrono::steady_clock::now();
         updateCounter = 0;
@@ -85,10 +86,10 @@ void Player::updateTexture() {
 }
 
 void Player::updateHealth() {
-
+    std::cout << this->hungryLevel << std::endl;
     switch (hungryLevel) {
         case wellFed:
-            setPlayerHP(getPlayerHP() + 0);
+            setPlayerHP(getPlayerHP() + 5);
             break;
         case slightlyPeckish:
             setPlayerHP(getPlayerHP() - 2);
@@ -139,4 +140,8 @@ void Player::updateHungryLevel(int foodState) {
             hungryLevel = starving;
             break;
     }
+}
+
+void Player::setHungryLevel() {
+    this->hungryLevel = wellFed;
 }

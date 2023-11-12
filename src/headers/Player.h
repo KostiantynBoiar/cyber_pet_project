@@ -71,5 +71,7 @@ public:
     void updateSleep();
 
     void updateHungryLevel(int foodState);
+
+    void setHungryLevel();
 };
 #endif //CYBER_PET_PROJECT_PLAYER_H
