@@ -6,7 +6,9 @@
 #include <SFML/Graphics/Sprite.hpp>
 #include <SFML/Graphics/Texture.hpp>
 #include <SFML/Graphics/RenderTarget.hpp>
+#include <chrono>
 #include "JSON_API.h"
+
 class Player {
 
 private:
@@ -15,7 +17,9 @@ private:
 
     std::string playerName;
     int playerHP;
-    int playerAge;
+    int updateCounter;
+    std::chrono::steady_clock::time_point lastHealthUpdateTime;
+
 
     void initSprite();
 

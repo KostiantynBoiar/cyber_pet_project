@@ -56,6 +56,7 @@ void Game::pollEvents() {
                         if (button.getText() == "Feed") {
                             jsonApi.updateFoodTime();
                             player->setPlayerHP(100);
+                            player->updateHungryLevel(jsonApi.getFoodState());
                             std::cout << "Feed button clicked" << std::endl;
                         } else if (button.getText() == "Rest") {
                             // Perform the action for the "Rest" button

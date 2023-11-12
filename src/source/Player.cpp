@@ -30,6 +30,9 @@ Player::Player() {
     this->initSprite();
     this->initTexture();
     this->setPlayerHP(100); // Initialize HP to a default value
+    this->updateCounter = 0;
+    this->hungryLevel = wellFed;
+    this->lastHealthUpdateTime = std::chrono::steady_clock::now();
 }
 
 Player::~Player() {
@@ -52,8 +55,15 @@ int currentTextureIndex = 0;
 void Player::update() {
 
     updateTexture();
-    updateHealth();
     updateSleep();
+
+    updateCounter++;
+
+    if (updateCounter >= 10) {
+        updateHealth();
+        lastHealthUpdateTime = std::chrono::steady_clock::now();
+        updateCounter = 0;
+    }
 }
 
 void Player::render(sf::RenderTarget& target) {
@@ -75,14 +85,10 @@ void Player::updateTexture() {
 }
 
 void Player::updateHealth() {
-    JSON_API jsonApi("gameFile.json");
 
-    if(getPlayerHP() > 99){
-        setPlayerHP(100);
-    }
     switch (hungryLevel) {
         case wellFed:
-            setPlayerHP(getPlayerHP() + 5);
+            setPlayerHP(getPlayerHP() + 0);
             break;
         case slightlyPeckish:
             setPlayerHP(getPlayerHP() - 2);
@@ -116,5 +122,21 @@ void Player::updateSleep() {
 }
 
 void Player::updateHungryLevel(int foodState) {
-
+    switch (foodState) {
+        case 1:
+            hungryLevel = wellFed;
+            break;
+        case 2:
+            hungryLevel = slightlyPeckish;
+            break;
+        case 3:
+            hungryLevel = ratherHungry;
+            break;
+        case 4:
+            hungryLevel = starving;
+            break;
+        case 5:
+            hungryLevel = starving;
+            break;
+    }
 }

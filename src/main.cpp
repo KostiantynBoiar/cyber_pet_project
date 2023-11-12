@@ -3,11 +3,14 @@
 #include "source/Player.cpp"
 #include "source/Button.cpp"
 #include "source/JSON_API.cpp"
-
 int main()
 {
     Game game;
     Player player;
+    JSON_API jsonApi("gameFile.json");
+
+    jsonApi.getActualDate();
+
     while (game.getWindowIsOpen())
     {
         game.update();
