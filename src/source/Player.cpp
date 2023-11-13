@@ -6,7 +6,7 @@
 #define yPos 290
 
 
-static std::string pathToTextures[] = {"/home/kostiantyn/Documents/education/C/cyber-pet-project/src/assets/textures/png/Idle (1).png",
+static std::string pathToTextures[] = {"../assets/textures/png/Idle1.png",
                                        "/home/kostiantyn/Documents/education/C/cyber-pet-project/src/assets/textures/png/Idle (2).png",
                                        "/home/kostiantyn/Documents/education/C/cyber-pet-project/src/assets/textures/png/Idle (3).png",
                                        "/home/kostiantyn/Documents/education/C/cyber-pet-project/src/assets/textures/png/Idle (4).png",

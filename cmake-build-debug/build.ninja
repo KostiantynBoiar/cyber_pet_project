@@ -89,7 +89,8 @@ build CMakeFiles/cyber_pet_project.dir/src/source/Button.cpp.o: CXX_COMPILER__cy
 
 build cyber_pet_project: CXX_EXECUTABLE_LINKER__cyber_pet_project_Debug CMakeFiles/cyber_pet_project.dir/src/main.cpp.o CMakeFiles/cyber_pet_project.dir/src/source/Player.cpp.o CMakeFiles/cyber_pet_project.dir/src/source/Game.cpp.o CMakeFiles/cyber_pet_project.dir/src/source/JSON_API.cpp.o CMakeFiles/cyber_pet_project.dir/src/source/Button.cpp.o | /usr/lib/libsfml-graphics.so.2.6.1 /usr/lib/libsfml-window.so.2.6.1 /usr/lib/libsfml-system.so.2.6.1
   FLAGS = -g
-  LINK_LIBRARIES = /usr/lib/libsfml-graphics.so.2.6.1  /usr/lib/libsfml-window.so.2.6.1  /usr/lib/libsfml-system.so.2.6.1
+  LINK_LIBRARIES = -Wl,-rpath,/usr/include/SFML  /usr/lib/libsfml-graphics.so.2.6.1  /usr/lib/libsfml-window.so.2.6.1  /usr/lib/libsfml-system.so.2.6.1
+  LINK_PATH = -L/usr/include/SFML
   OBJECT_DIR = CMakeFiles/cyber_pet_project.dir
   POST_BUILD = :
   PRE_LINK = :
