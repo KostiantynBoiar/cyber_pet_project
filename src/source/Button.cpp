@@ -1,9 +1,6 @@
 //
 // Created by kostiantyn on 11/7/23.
 //
-
-#include <SFML/Window/Mouse.hpp>
-#include <SFML/Window/Event.hpp>
 #include "../headers/Button.h"
 
 

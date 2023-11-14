@@ -6,6 +6,11 @@
 #include "rapidjson/stringbuffer.h"
 #include <string>
 #include <ctime>
+#include <fstream>
+#include <iostream>
+#include <chrono>
+#include <vector>
+#include <algorithm>
 
 class JSON_API {
 private:

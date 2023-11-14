@@ -1,7 +1,4 @@
-#include <iostream>
-#include <SFML/Graphics/Text.hpp>
 #include "../headers/Game.h"
-#include "../headers/Button.h"
 
 JSON_API jsonApi("gameFile.json");
 Game::Game() {

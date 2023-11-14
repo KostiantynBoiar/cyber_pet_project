@@ -10,6 +10,10 @@
 #include "Player.h"
 #include "Button.h"
 #include "JSON_API.h"
+#include <iostream>
+#include <SFML/Graphics/Text.hpp>
+#include "../headers/Button.h"
+
 /*Header of class that acts the game engine*/
 
 class Game {

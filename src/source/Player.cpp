@@ -1,7 +1,5 @@
-#include <iostream>
 #include "../headers/Player.h"
-#include <chrono>
-#include <thread>
+
 #define xPos 330
 #define yPos 290
 

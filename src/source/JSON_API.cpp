@@ -3,12 +3,6 @@
 //
 
 #include "../headers/JSON_API.h"
-#include <fstream>
-#include <iostream>
-#include <chrono>
-#include <vector>
-#include <algorithm>
-
 #define MINUTES_IN_DAY 1440
 #define MINUTES_IN_HOURS 60
 #define MINUTES_IN_YEAR 525600

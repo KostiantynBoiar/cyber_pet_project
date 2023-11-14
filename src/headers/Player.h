@@ -1,12 +1,13 @@
 // Player.h
 #ifndef CYBER_PET_PROJECT_PLAYER_H
 #define CYBER_PET_PROJECT_PLAYER_H
-
+#include <iostream>
 #include <string>
 #include <SFML/Graphics/Sprite.hpp>
 #include <SFML/Graphics/Texture.hpp>
 #include <SFML/Graphics/RenderTarget.hpp>
 #include <chrono>
+#include <thread>
 #include "JSON_API.h"
 
 class Player {
