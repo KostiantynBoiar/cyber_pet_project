@@ -8,7 +8,7 @@ int main()
     Game game;
     Player player;
 
-    
+    jsonApi.getActualDate();
     while (game.getWindowIsOpen())
     {
         game.update();

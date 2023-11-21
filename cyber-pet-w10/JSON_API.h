@@ -17,7 +17,6 @@ private:
     rapidjson::Document jsonData;
     std::string filename;
 
-    // Вспомогательные методы
     bool fileExists() const;
     bool loadJsonFromFile();
     void saveJsonToFile() const;

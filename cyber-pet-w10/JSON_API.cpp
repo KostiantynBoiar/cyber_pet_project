@@ -140,48 +140,35 @@ std::string JSON_API::convertJsonDate(const std::string& jsonDate) const {
 int JSON_API::parseDateTime(const std::string& dateTimeStr) const {
     std::string delimiter = ":";
     size_t pos_start = 0, pos_end, delim_len = delimiter.length();
-    std::string token;
     std::vector<int> res;
+    std::string token;
 
     while ((pos_end = dateTimeStr.find(delimiter, pos_start)) != std::string::npos) {
         token = dateTimeStr.substr(pos_start, pos_end - pos_start);
-
-        token.erase(std::remove_if(token.begin(), token.end(), [](unsigned char c) { return !std::isdigit(c); }), token.end());
-
-        pos_start = pos_end + delim_len;
-
-        if (!token.empty()) {
-            res.push_back(stoi(token));
-        }
-    }
-
-    token = dateTimeStr.substr(pos_start);
-    token.erase(std::remove_if(token.begin(), token.end(), [](unsigned char c) { return !std::isdigit(c); }), token.end());
-
-    if (!token.empty()) {
         res.push_back(stoi(token));
+        pos_start = pos_end + delim_len;
+    }
+    token = dateTimeStr.substr(pos_start);
+    res.push_back(stoi(token));
+
+    if (res.size() != 5) {
+        return -1;
     }
 
     int minSum = (res[0] - 2022) * MINUTES_IN_YEAR + res[1] * MINUTES_IN_MONTH + res[2] * MINUTES_IN_DAY + res[3] * MINUTES_IN_HOURS + res[4];
     return minSum;
-
 }
 
 std::string JSON_API::getActualDate() {
-    if (!jsonData.HasMember("actualTime")) {
-        jsonData.AddMember("actualTime", "", jsonData.GetAllocator());
-    }
-
     std::time_t currentTime = std::time(nullptr);
     std::tm* timeInfo = std::localtime(&currentTime);
     char buffer[20];
     strftime(buffer, sizeof(buffer), "%Y:%m:%d:%H:%M", timeInfo);
 
-    saveJsonToFile();
-
     jsonData["actualTime"].SetString(buffer, static_cast<rapidjson::SizeType>(strlen(buffer)));
 
     saveJsonToFile();
+
     return jsonData["actualTime"].GetString();
 }
 

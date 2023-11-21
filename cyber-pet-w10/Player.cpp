@@ -5,7 +5,7 @@
 #define yPos 290
 
 
-static std::string pathToTextures[] = { "Idle1.png", "Idle (2).png" };
+static std::string pathToTextures[] = { "Idle1.png", "Idle2.png", "Idle3.png", "Idle4.png", "Idle5.png" };
 
 
 int Player::getPlayerHP() {
