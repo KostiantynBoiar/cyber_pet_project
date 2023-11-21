@@ -13,10 +13,217 @@
       <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
       <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
     </Filter>
+    <Filter Include="Resource Files\fonts">
+      <UniqueIdentifier>{ab7d1b21-07c7-4855-9442-7d6b8454b471}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Resource Files\textures">
+      <UniqueIdentifier>{ff317d91-ee82-4d26-a6fa-daac7a177953}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="Button.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Game.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="JSON_API.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Player.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="Button.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Game.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="JSON_API.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Player.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <Font Include="assets\fonts\Raleway-Bold.ttf">
+      <Filter>Resource Files\fonts</Filter>
+    </Font>
+    <Font Include="assets\fonts\Raleway-ExtraBold.ttf">
+      <Filter>Resource Files\fonts</Filter>
+    </Font>
+    <Font Include="assets\fonts\Raleway-ExtraLight.ttf">
+      <Filter>Resource Files\fonts</Filter>
+    </Font>
+    <Font Include="assets\fonts\Raleway-Heavy.ttf">
+      <Filter>Resource Files\fonts</Filter>
+    </Font>
+    <Font Include="assets\fonts\Raleway-Light.ttf">
+      <Filter>Resource Files\fonts</Filter>
+    </Font>
+    <Font Include="assets\fonts\Raleway-Medium.ttf">
+      <Filter>Resource Files\fonts</Filter>
+    </Font>
+    <Font Include="assets\fonts\Raleway-Regular.ttf">
+      <Filter>Resource Files\fonts</Filter>
+    </Font>
+    <Font Include="assets\fonts\Raleway-SemiBold.ttf">
+      <Filter>Resource Files\fonts</Filter>
+    </Font>
+    <Font Include="assets\fonts\Raleway-Thin.ttf">
+      <Filter>Resource Files\fonts</Filter>
+    </Font>
+  </ItemGroup>
+  <ItemGroup>
+    <Image Include="assets\textures\png\Dead (3).png">
+      <Filter>Resource Files\textures</Filter>
+    </Image>
+    <Image Include="assets\textures\png\Dead (4).png">
+      <Filter>Resource Files\textures</Filter>
+    </Image>
+    <Image Include="assets\textures\png\Dead (5).png">
+      <Filter>Resource Files\textures</Filter>
+    </Image>
+    <Image Include="assets\textures\png\Dead (6).png">
+      <Filter>Resource Files\textures</Filter>
+    </Image>
+    <Image Include="assets\textures\png\Dead (7).png">
+      <Filter>Resource Files\textures</Filter>
+    </Image>
+    <Image Include="assets\textures\png\Dead (8).png">
+      <Filter>Resource Files\textures</Filter>
+    </Image>
+    <Image Include="assets\textures\png\Idle (2).png">
+      <Filter>Resource Files\textures</Filter>
+    </Image>
+    <Image Include="assets\textures\png\Idle (3).png">
+      <Filter>Resource Files\textures</Filter>
+    </Image>
+    <Image Include="assets\textures\png\Idle (4).png">
+      <Filter>Resource Files\textures</Filter>
+    </Image>
+    <Image Include="assets\textures\png\Idle (5).png">
+      <Filter>Resource Files\textures</Filter>
+    </Image>
+    <Image Include="assets\textures\png\Idle (6).png">
+      <Filter>Resource Files\textures</Filter>
+    </Image>
+    <Image Include="assets\textures\png\Idle (7).png">
+      <Filter>Resource Files\textures</Filter>
+    </Image>
+    <Image Include="assets\textures\png\Idle (8).png">
+      <Filter>Resource Files\textures</Filter>
+    </Image>
+    <Image Include="assets\textures\png\Idle (9).png">
+      <Filter>Resource Files\textures</Filter>
+    </Image>
+    <Image Include="assets\textures\png\Idle (10).png">
+      <Filter>Resource Files\textures</Filter>
+    </Image>
+    <Image Include="assets\textures\png\Idle1.png">
+      <Filter>Resource Files\textures</Filter>
+    </Image>
+    <Image Include="assets\textures\png\Jump (1).png">
+      <Filter>Resource Files\textures</Filter>
+    </Image>
+    <Image Include="assets\textures\png\Jump (2).png">
+      <Filter>Resource Files\textures</Filter>
+    </Image>
+    <Image Include="assets\textures\png\Jump (3).png">
+      <Filter>Resource Files\textures</Filter>
+    </Image>
+    <Image Include="assets\textures\png\Jump (4).png">
+      <Filter>Resource Files\textures</Filter>
+    </Image>
+    <Image Include="assets\textures\png\Jump (5).png">
+      <Filter>Resource Files\textures</Filter>
+    </Image>
+    <Image Include="assets\textures\png\Jump (6).png">
+      <Filter>Resource Files\textures</Filter>
+    </Image>
+    <Image Include="assets\textures\png\Jump (7).png">
+      <Filter>Resource Files\textures</Filter>
+    </Image>
+    <Image Include="assets\textures\png\Jump (8).png">
+      <Filter>Resource Files\textures</Filter>
+    </Image>
+    <Image Include="assets\textures\png\Jump (9).png">
+      <Filter>Resource Files\textures</Filter>
+    </Image>
+    <Image Include="assets\textures\png\Jump (10).png">
+      <Filter>Resource Files\textures</Filter>
+    </Image>
+    <Image Include="assets\textures\png\Jump (11).png">
+      <Filter>Resource Files\textures</Filter>
+    </Image>
+    <Image Include="assets\textures\png\Jump (12).png">
+      <Filter>Resource Files\textures</Filter>
+    </Image>
+    <Image Include="assets\textures\png\Run (1).png">
+      <Filter>Resource Files\textures</Filter>
+    </Image>
+    <Image Include="assets\textures\png\Run (2).png">
+      <Filter>Resource Files\textures</Filter>
+    </Image>
+    <Image Include="assets\textures\png\Run (3).png">
+      <Filter>Resource Files\textures</Filter>
+    </Image>
+    <Image Include="assets\textures\png\Run (4).png">
+      <Filter>Resource Files\textures</Filter>
+    </Image>
+    <Image Include="assets\textures\png\Run (5).png">
+      <Filter>Resource Files\textures</Filter>
+    </Image>
+    <Image Include="assets\textures\png\Run (6).png">
+      <Filter>Resource Files\textures</Filter>
+    </Image>
+    <Image Include="assets\textures\png\Run (7).png">
+      <Filter>Resource Files\textures</Filter>
+    </Image>
+    <Image Include="assets\textures\png\Run (8).png">
+      <Filter>Resource Files\textures</Filter>
+    </Image>
+    <Image Include="assets\textures\png\Walk (1).png">
+      <Filter>Resource Files\textures</Filter>
+    </Image>
+    <Image Include="assets\textures\png\Walk (2).png">
+      <Filter>Resource Files\textures</Filter>
+    </Image>
+    <Image Include="assets\textures\png\Walk (3).png">
+      <Filter>Resource Files\textures</Filter>
+    </Image>
+    <Image Include="assets\textures\png\Walk (4).png">
+      <Filter>Resource Files\textures</Filter>
+    </Image>
+    <Image Include="assets\textures\png\Walk (5).png">
+      <Filter>Resource Files\textures</Filter>
+    </Image>
+    <Image Include="assets\textures\png\Walk (6).png">
+      <Filter>Resource Files\textures</Filter>
+    </Image>
+    <Image Include="assets\textures\png\Walk (7).png">
+      <Filter>Resource Files\textures</Filter>
+    </Image>
+    <Image Include="assets\textures\png\Walk (8).png">
+      <Filter>Resource Files\textures</Filter>
+    </Image>
+    <Image Include="assets\textures\png\Walk (9).png">
+      <Filter>Resource Files\textures</Filter>
+    </Image>
+    <Image Include="assets\textures\png\Walk (10).png">
+      <Filter>Resource Files\textures</Filter>
+    </Image>
+    <Image Include="assets\textures\png\Dead (1).png">
+      <Filter>Resource Files\textures</Filter>
+    </Image>
+    <Image Include="assets\textures\png\Dead (2).png">
+      <Filter>Resource Files\textures</Filter>
+    </Image>
   </ItemGroup>
 </Project>

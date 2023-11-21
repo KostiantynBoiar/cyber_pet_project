@@ -1,24 +1,19 @@
-#include <SFML/Graphics.hpp>
-#include <iostream>
+#include "Game.h"
+#include "Player.h"
+#include "JSON_API.h"
 
 int main()
 {
-    sf::RenderWindow window(sf::VideoMode(200, 200), "SFML works!");
-    sf::CircleShape shape(100.f);
-    shape.setFillColor(sf::Color::Green);
+    JSON_API jsonApi("gameFile.json");
+    Game game;
+    Player player;
 
-    while (window.isOpen())
+    
+    while (game.getWindowIsOpen())
     {
-        sf::Event event;
-        while (window.pollEvent(event))
-        {
-            if (event.type == sf::Event::Closed)
-                window.close();
-        }
-
-        window.clear();
-        window.draw(shape);
-        window.display();
+        game.update();
+        player.update();
+        game.render();
     }
 
     return 0;

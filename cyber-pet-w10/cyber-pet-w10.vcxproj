@@ -76,7 +76,8 @@
       <SDLCheck>true</SDLCheck>
       <PreprocessorDefinitions>WIN32;_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
-      <AdditionalIncludeDirectories>C:\Users\kosty\source\repos\cyber-pet-w10\SFML-2.6.1\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>C:\Users\kosty\source\repos\cyber-pet-w10\rapidjson\include;C:\Users\kosty\source\repos\cyber-pet-w10\SFML-2.6.1\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <DisableSpecificWarnings>4996</DisableSpecificWarnings>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
@@ -109,7 +110,8 @@
       <SDLCheck>true</SDLCheck>
       <PreprocessorDefinitions>_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
-      <AdditionalIncludeDirectories>C:\Users\kosty\source\repos\cyber-pet-w10\SFML-2.6.1\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>C:\Users\kosty\source\repos\cyber-pet-w10\rapidjson\include;C:\Users\kosty\source\repos\cyber-pet-w10\SFML-2.6.1\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <DisableSpecificWarnings>4996</DisableSpecificWarnings>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
@@ -137,7 +139,78 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="Button.cpp" />
+    <ClCompile Include="Game.cpp" />
+    <ClCompile Include="JSON_API.cpp" />
     <ClCompile Include="main.cpp" />
+    <ClCompile Include="Player.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="Button.h" />
+    <ClInclude Include="Game.h" />
+    <ClInclude Include="JSON_API.h" />
+    <ClInclude Include="Player.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <Font Include="assets\fonts\Raleway-Bold.ttf" />
+    <Font Include="assets\fonts\Raleway-ExtraBold.ttf" />
+    <Font Include="assets\fonts\Raleway-ExtraLight.ttf" />
+    <Font Include="assets\fonts\Raleway-Heavy.ttf" />
+    <Font Include="assets\fonts\Raleway-Light.ttf" />
+    <Font Include="assets\fonts\Raleway-Medium.ttf" />
+    <Font Include="assets\fonts\Raleway-Regular.ttf" />
+    <Font Include="assets\fonts\Raleway-SemiBold.ttf" />
+    <Font Include="assets\fonts\Raleway-Thin.ttf" />
+  </ItemGroup>
+  <ItemGroup>
+    <Image Include="assets\textures\png\Dead (1).png" />
+    <Image Include="assets\textures\png\Dead (2).png" />
+    <Image Include="assets\textures\png\Dead (3).png" />
+    <Image Include="assets\textures\png\Dead (4).png" />
+    <Image Include="assets\textures\png\Dead (5).png" />
+    <Image Include="assets\textures\png\Dead (6).png" />
+    <Image Include="assets\textures\png\Dead (7).png" />
+    <Image Include="assets\textures\png\Dead (8).png" />
+    <Image Include="assets\textures\png\Idle (10).png" />
+    <Image Include="assets\textures\png\Idle (2).png" />
+    <Image Include="assets\textures\png\Idle (3).png" />
+    <Image Include="assets\textures\png\Idle (4).png" />
+    <Image Include="assets\textures\png\Idle (5).png" />
+    <Image Include="assets\textures\png\Idle (6).png" />
+    <Image Include="assets\textures\png\Idle (7).png" />
+    <Image Include="assets\textures\png\Idle (8).png" />
+    <Image Include="assets\textures\png\Idle (9).png" />
+    <Image Include="assets\textures\png\Idle1.png" />
+    <Image Include="assets\textures\png\Jump (1).png" />
+    <Image Include="assets\textures\png\Jump (10).png" />
+    <Image Include="assets\textures\png\Jump (11).png" />
+    <Image Include="assets\textures\png\Jump (12).png" />
+    <Image Include="assets\textures\png\Jump (2).png" />
+    <Image Include="assets\textures\png\Jump (3).png" />
+    <Image Include="assets\textures\png\Jump (4).png" />
+    <Image Include="assets\textures\png\Jump (5).png" />
+    <Image Include="assets\textures\png\Jump (6).png" />
+    <Image Include="assets\textures\png\Jump (7).png" />
+    <Image Include="assets\textures\png\Jump (8).png" />
+    <Image Include="assets\textures\png\Jump (9).png" />
+    <Image Include="assets\textures\png\Run (1).png" />
+    <Image Include="assets\textures\png\Run (2).png" />
+    <Image Include="assets\textures\png\Run (3).png" />
+    <Image Include="assets\textures\png\Run (4).png" />
+    <Image Include="assets\textures\png\Run (5).png" />
+    <Image Include="assets\textures\png\Run (6).png" />
+    <Image Include="assets\textures\png\Run (7).png" />
+    <Image Include="assets\textures\png\Run (8).png" />
+    <Image Include="assets\textures\png\Walk (1).png" />
+    <Image Include="assets\textures\png\Walk (10).png" />
+    <Image Include="assets\textures\png\Walk (2).png" />
+    <Image Include="assets\textures\png\Walk (3).png" />
+    <Image Include="assets\textures\png\Walk (4).png" />
+    <Image Include="assets\textures\png\Walk (5).png" />
+    <Image Include="assets\textures\png\Walk (6).png" />
+    <Image Include="assets\textures\png\Walk (7).png" />
+    <Image Include="assets\textures\png\Walk (8).png" />
+    <Image Include="assets\textures\png\Walk (9).png" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
