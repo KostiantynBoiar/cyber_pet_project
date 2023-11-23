@@ -51,15 +51,18 @@ void Game::pollEvents() {
                 if (button.isClicked(*this->window, this->event)) {
                     // Handle button click here
                     if (button.getText() == "Feed") {
+                        jsonApi.getActualDate();
                         jsonApi.updateFoodTime();
                         player->setPlayerHP(100);
                         player->setHungryLevel();
                         std::cout << "Feed button clicked" << std::endl;
                     }
                     else if (button.getText() == "Rest") {
+                        std::cout << "Rest button clicked" << std::endl;
                         jsonApi.updateRestTime();
                         player->setPlayerHP(100);
                         player->setRestLevel();
+                        
                     }
                 }
             }

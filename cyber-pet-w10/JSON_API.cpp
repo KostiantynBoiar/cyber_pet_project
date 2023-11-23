@@ -81,9 +81,6 @@ void JSON_API::updateFoodTime() {
     char buffer[20];
     strftime(buffer, sizeof(buffer), "%Y:%m:%d:%H:%M", timeInfo);
 
-    std::cout << "Before updateFoodTime: " << std::endl;
-    saveJsonToFile();
-
     jsonData["foodTime"].SetString(buffer, static_cast<rapidjson::SizeType>(strlen(buffer)));
 
     std::cout << "After updateFoodTime: " << jsonData["foodTime"].GetString() << std::endl;
@@ -99,9 +96,6 @@ void JSON_API::updateRestTime() {
     std::tm* timeInfo = std::localtime(&currentTime);
     char buffer[20];
     strftime(buffer, sizeof(buffer), "%Y:%m:%d:%H:%M", timeInfo);
-
-    std::cout << "Before restTime: " << std::endl;
-    saveJsonToFile();
 
     jsonData["restTime"].SetString(buffer, static_cast<rapidjson::SizeType>(strlen(buffer)));
 

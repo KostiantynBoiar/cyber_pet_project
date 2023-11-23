@@ -49,10 +49,13 @@ void Player::update() {
 
     updateCounter++;
     JSON_API jsonApi("gameFile.json");
+    if (this->getPlayerHP() > 95) {
+        this->setPlayerHP(100);
+    }
     if (updateCounter >= 10) {
         updateHungryLevel(jsonApi.getFoodState());
         updateRestLevel(jsonApi.getRestState());
-        //updateSleep();
+        updateSleep();
         updateHealth();
         lastHealthUpdateTime = std::chrono::steady_clock::now();
         updateCounter = 0;
@@ -66,7 +69,7 @@ void Player::render(sf::RenderTarget& target) {
 }
 
 void Player::updateTexture() {
-    currentTextureIndex = (currentTextureIndex + 1) % 7;
+    currentTextureIndex = (currentTextureIndex + 1) % 5;
     this->texture.loadFromFile(pathToTextures[currentTextureIndex]);
     std::this_thread::sleep_for(std::chrono::milliseconds(50));
     if (this->playerHP < 50) {
@@ -102,14 +105,19 @@ void Player::updateSleep() {
     switch (sleepLevel) {
     case wideAwake:
         setPlayerHP(getPlayerHP() + 5);
+        break;
     case awake:
         setPlayerHP(getPlayerHP() + 0);
+        break;
     case tired:
         setPlayerHP(getPlayerHP() - 1);
+        break;
     case failingAsleep:
         setPlayerHP(getPlayerHP() - 4);
+        break;
     case collapsed:
         setPlayerHP(getPlayerHP() - 10);
+        break;
     }
 }
 
@@ -141,14 +149,19 @@ void Player::updateRestLevel(int restState) {
     switch (restState) {
     case 1:
         sleepLevel = wideAwake;
+        break;
     case 2:
         sleepLevel = awake;
+        break;
     case 3:
         sleepLevel = tired;
+        break;
     case 4:
         sleepLevel = failingAsleep;
+        break;
     case 5:
         sleepLevel = collapsed;
+        break;
     }
 }
 
